@@ -1,7 +1,7 @@
-import './App.css';
-
 // DEPENDENCIES
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react";
 
 // PAGES
 import Home from "./Pages/Home";
@@ -14,21 +14,25 @@ import Home from "./Pages/Home";
 // COMPONENTS
 import NavBar from "./Components/NavBar";
 import About from "./Pages/About"
+import Landing from "./Components/Landing";
 
 function App() {
   return (
+
     <div className="App">
       <Router>
-        <NavBar />
+//         <NavBar />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Landing />} />
             <Route path="/about" element={<About/>} />
             {/* <Route path="/users" element={<Index />} />
             <Route path="/users/new" element={<New />} />
             <Route exact path="/users/:id" element={<Show />} />
             <Route path="/users/:id/edit" element={<Edit />} />
             <Route path="*" element={<Error />} /> */}
+            {/* <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} /> */}
           </Routes>
         </main>
       </Router>
