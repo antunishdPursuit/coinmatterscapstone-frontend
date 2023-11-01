@@ -98,6 +98,11 @@ body {
   color: black;
 }
 
+#MainText{
+  font-family: "Montserrat", sans-serif;
+  color: rgb(249, 66, 176);
+
+}
 /* Responsive styles for medium-sized screens (e.g., tablets) */
 @media (max-width: 768px) {
   .big-pink,
