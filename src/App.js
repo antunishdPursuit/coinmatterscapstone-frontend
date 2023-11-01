@@ -15,13 +15,15 @@ import Home from "./Pages/Home";
 import NavBar from "./Components/NavBar";
 import About from "./Pages/About"
 import Landing from "./Components/Landing";
+import Register from "./Components/Landing/Register";
+import LogIn from "./Components/Landing/LogIn";
 
 function App() {
   return (
 
     <div className="App">
       <Router>
-//         <NavBar />
+         {/* <NavBar /> */}
         <main>
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -31,8 +33,8 @@ function App() {
             <Route exact path="/users/:id" element={<Show />} />
             <Route path="/users/:id/edit" element={<Edit />} />
             <Route path="*" element={<Error />} /> */}
-            {/* <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} /> */}
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<LogIn />} />
           </Routes>
         </main>
       </Router>
