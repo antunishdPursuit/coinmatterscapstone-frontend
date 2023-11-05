@@ -33,7 +33,6 @@ function Register() {
     const handleSubmit = (event) => {
         event.preventDefault();
         addUser(user)
-
     };
 
   return (
