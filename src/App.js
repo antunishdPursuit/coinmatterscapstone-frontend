@@ -1,5 +1,3 @@
-// DEPENDENCIES
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from "react";
 
@@ -17,13 +15,19 @@ import About from "./Pages/About"
 import Landing from "./Components/Landing";
 import Register from "./Components/Landing/Register";
 import LogIn from "./Components/Landing/LogIn";
+import SearchBar from './Components/SearchBar';
+
+
 
 function App() {
   return (
 
     <div className="App">
+
       <Router>
          {/* <NavBar /> */}
+//         <NavBar />
+//         <SearchBar />
         <main>
           <Routes>
             <Route path="/" element={<Landing />} />
