@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../logo.png";
 import "../Landing.css";
+import { Link } from "react-router-dom";
 
 function Landing() {
   return (
@@ -10,22 +11,20 @@ function Landing() {
           <img src={logo} alt="My App Logo" className="logo" />
         </div>
         <div className="links">
-          <a href="/home">Search</a>
-          <a href="/aboutUs">About Us</a>
+          <Link to="/search">Search</Link>
+          <Link to="/about">About Us</Link>
         </div>
       </div>
       <p className="centered outlined-text no-margin">Save Time</p>
       <p className="centered big-pink no-margin">Save Money</p>
       <div className="info-box">
-        <h3>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.... INFO ABOUT CoinMatters, Who we are, What we do......
+        <h3 id="MainText">
+        Are you tired of the endless struggle to save money on your grocery shopping? Imagine a world where you can effortlessly compare and contrast prices from various stores, all in one place. Introducing our innovative price comparison website, the ultimate solution to transform your shopping experience.
         </h3>
       </div>
       <div className="buttons">
-        <button className="register-button">Register</button>
-        <button className="login-button login">Login</button>
+        <Link to="/register"><button className="register-button">Register</button></Link>
+        <Link to="/login"><button className="login-button login">Login</button></Link>
       </div>
     </div>
   );
