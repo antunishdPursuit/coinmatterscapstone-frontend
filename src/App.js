@@ -15,7 +15,7 @@ import About from "./Pages/About"
 import Landing from "./Components/Landing";
 import Register from "./Components/Landing/Register";
 import LogIn from "./Components/Landing/LogIn";
-import SearchBar from './Components/SearchBar';
+import SearchBar from './Components/Searches/SearchBar';
 
 
 
