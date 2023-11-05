@@ -11,7 +11,7 @@ function Landing() {
           <img src={logo} alt="My App Logo" className="logo" />
         </div>
         <div className="links">
-          <Link to="/home">Search</Link>
+          <Link to="/search">Search</Link>
           <Link to="/about">About Us</Link>
         </div>
       </div>
