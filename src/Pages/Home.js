@@ -5,7 +5,7 @@ function Home() {
   return (
     <div>
         Explantion of App
-        <LogIn></LogIn>
+        <LogIn />
     </div>
   )
 }
