@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import navLogo from "../navLogo.png";
-import "../NavBar.css";
+import "../CSS/NavBar.css";
 
 function NavBar() {
   const { username } = useParams();
@@ -16,7 +16,7 @@ function NavBar() {
         <span className="nav-title">CoinMatters</span>
       </div>
       <div className="links">
-        <Link to="/home">Home</Link>
+        <Link to="search">Search</Link>
         <Link to="/aboutUs">About Us</Link>
         <Link to="/membership">Membership</Link>
         <Link to="/contact">Contact</Link>
