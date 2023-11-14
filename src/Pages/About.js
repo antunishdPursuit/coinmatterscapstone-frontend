@@ -6,7 +6,7 @@ import {
   faLinkedin,
   faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
-import logo from "../logo.png"
+import logo from "../logo.png";
 
 const teamMembers = [
   {
@@ -47,7 +47,9 @@ function About() {
   return (
     <div>
       <header className="about-banner">
-      <img src={logo} alt="CoinMatters App" />
+        <a href="/search">
+          <img src={logo} alt="CoinMatters App" />
+        </a>
         <h1>Team</h1>
       </header>
       <section className="team">
