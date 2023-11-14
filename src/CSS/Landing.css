@@ -1,0 +1,147 @@
+/* Default styles for larger screens */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo-container {
+  flex: 0 0 auto; 
+  margin-right: 50%;
+}
+/* Style the logo */
+.logo {
+  width: 150px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.links {
+  display: flex;
+  gap: 80px;
+  font-size: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: black;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.landing-wrapper {
+  position: absolute;
+  top: 5;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url("https://assets-global.website-files.com/603cffd4503d70116b6b1da5/63e695f0dbbe99042f0f048b_groceries.png");
+  background-size: 70% auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 180% center;
+  padding: 0;
+}
+
+
+
+.big-pink {
+  font-size: 170px;
+  /* font-size: 1200%; */
+  color: rgb(249, 66, 176);
+  padding-left: 5%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.centered {
+  text-align: left;
+}
+.no-margin {
+  margin: 0;
+}
+.info-box {
+  background-color: #f9f9f9;
+  padding: 5%;
+  text-align: left;
+  overflow-wrap: break-word;
+  width: 600px;
+  /* height: 250px; */
+}
+.outlined-text {
+  font-size: 170px;
+  color: transparent;
+  text-align: left;
+  padding-left: 5%;
+  margin: 0;
+  -webkit-text-stroke: 2px rgb(249, 66, 176);
+  font-family: "Montserrat", sans-serif;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-right: 10%;
+}
+.register-button,
+.login-button {
+  padding: 10px 50px;
+  margin: 0 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.register-button:hover,
+.login-button:hover {
+  background-color: #ff69b4;
+}
+.login {
+  background-color: white;
+  color: black;
+}
+
+#MainText{
+  font-family: "Montserrat", sans-serif;
+  color: rgb(249, 66, 176);
+
+}
+/* Responsive styles for medium-sized screens (e.g., tablets) */
+@media (max-width: 768px) {
+  .big-pink,
+  .outlined-text {
+    font-size: 120px;
+  }
+  .info-box {
+    width: 100%;
+  }
+}
+
+/* Responsive styles for smaller screens (e.g., mobile devices) */
+@media (max-width: 576px) {
+  .big-pink,
+  .outlined-text {
+    font-size: 80px;
+  }
+  .info-box {
+    width: 100%;
+  }
+  .buttons {
+    justify-content: center; /* Center-align buttons on smaller screens */
+    flex-direction: column; /* Stack buttons vertically */
+    margin-top: 10px; /* Adjust spacing between buttons */
+  }
+  .register-button,
+  .login-button {
+    padding: 10px 30px;
+    margin: 10px 0;
+  }
+  .login {
+    background-color: black;
+    color: white;
+  }
+}
