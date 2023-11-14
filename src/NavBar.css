@@ -1,0 +1,31 @@
+.navbar {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+.links {
+  display: block;
+  padding-right: 5%;
+  /* padding-top: 3%; */
+  padding-top: 30px;
+}
+
+.links a {
+  text-decoration: none;
+  margin-right: 20px;
+}
+.logo-div {
+  flex: 1;
+  margin-right: 20px;
+  /* padding-top: 2px; */
+}
+
+.nav-logo {
+  max-width: 50px;
+  /* height: auto; */
+}
+
+.nav-title {
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 1%;
+}
