@@ -3,6 +3,8 @@ import React from "react";
 
 // PAGES
 import Home from "./Pages/Home";
+import Search from "./Pages/Search";
+import Results from "./Pages/Results"
 // import Edit from "./Pages/Edit";
 // import Error from "./Pages/ErrorPage";
 // import Index from "./Pages/Index";
@@ -15,7 +17,9 @@ import About from "./Pages/About"
 import Landing from "./Components/Landing";
 import Register from "./Components/Landing/Register";
 import LogIn from "./Components/Landing/LogIn";
-import SearchBar from './Components/Searches/SearchBar';
+import SearchResults from "./Components/Searches/SearchResults";
+
+
 
 
 
@@ -26,12 +30,13 @@ function App() {
 
       <Router>
          {/* <NavBar /> */}
-//         <NavBar />
-//         <SearchBar />
+        <NavBar />
         <main>
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/about" element={<About/>} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/search-results/:query" element={<Results />} />
             {/* <Route path="/users" element={<Index />} />
             <Route path="/users/new" element={<New />} />
             <Route exact path="/users/:id" element={<Show />} />
