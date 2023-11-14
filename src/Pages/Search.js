@@ -3,7 +3,6 @@ import logo from "../Images/pig-background.png"
 import "../CSS/Search.css";
 
 
-
 export default function Search() {
     return (
         <div className="search-page-container">
