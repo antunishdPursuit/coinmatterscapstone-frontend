@@ -1,5 +1,7 @@
+// DEPENDENCIES
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 
 // PAGES
 import Home from "./Pages/Home";
@@ -11,36 +13,36 @@ import Home from "./Pages/Home";
 
 // COMPONENTS
 import NavBar from "./Components/NavBar";
+import LandingNavBar from "./Components/Landing/LandingNavBar";
 import About from "./Pages/About"
-import Landing from "./Components/Landing";
+import Landing from "./Components/Landing/Landing";
 import Register from "./Components/Landing/Register";
 import LogIn from "./Components/Landing/LogIn";
-import SearchBar from './Components/SearchBar';
-
-
+import SearchBar from "./Components/SearchBar"
 
 function App() {
+  const [sharedData, setSharedData] = useState({})
+
+  const updateData = newData => {
+    setSharedData(newData);
+  };
+
   return (
-
-    <div className="App">
-
+    <div className="app">
       <Router>
-         {/* <NavBar /> */}
-//         <NavBar />
-//         <SearchBar />
         <main>
+          <LandingNavBar></LandingNavBar>
           <Routes>
-            <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Landing sharedData={sharedData}/>} />
             <Route path="/about" element={<About/>} />
-            {/* <Route path="/users" element={<Index />} />
-            <Route path="/users/new" element={<New />} />
-            <Route exact path="/users/:id" element={<Show />} />
-            <Route path="/users/:id/edit" element={<Edit />} />
-            <Route path="*" element={<Error />} /> */}
+            <Route path="/search" element={<SearchBar sharedData={sharedData} updateData={updateData}/>} />
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<LogIn />} />
+            <Route path="/login" element={<LogIn sharedData={sharedData} updateData={updateData}/>} />
           </Routes>
         </main>
+        <section>
+
+        </section>
       </Router>
     </div>
   );

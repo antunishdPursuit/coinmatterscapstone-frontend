@@ -1,23 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchResults from "./SearchResults";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+const API = process.env.REACT_APP_API_URL;
 
 //external API keys
 const KEY = process.env.REACT_APP_API_KEY;
 const rapidApiKey = process.env.REACT_APP_RapidAPI_Key;
 
 
-export default function SearchBar() {
+export default function SearchBar( {sharedData, updateData} ) {
+    const navigate = useNavigate();
     const [results, setResults] = useState([]);
     const [shoppingResults, setShoppingResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchInput, setSearchInput] = useState("");
-
+    const [oneUserData, setOneUserData] = useState({})
     const handleSearch = (e) => {
         e.preventDefault();
         setSearchInput(e.target.value)
         performSearch(searchInput);
     };
 
+    useEffect(() => {
+      UserData(sharedData)
+    }, [])
+
+    const UserData = (data) => {
+      axios
+        .get(`${API}/users`, {
+          headers: {
+            Authorization: `Bearer ${data.token}`, // Add the JWT token to the request headers
+          },
+        })
+        .then((res) => {
+          console.log(res.data)
+          setOneUserData(res.data.authorizedData)
+        })
+        .catch((error) => {
+          console.error("catch", error);
+        });
+    };
+    function Logout(){
+      updateData('')
+      navigate(`/login`);
+    }
+    
     const performSearch = async (query) => {
         setLoading(true);
     
@@ -54,9 +83,11 @@ export default function SearchBar() {
       }
 
 
-
     return (
         <div>
+          <button onClick={Logout}>
+            Logout
+          </button>
             <input
                 type="text"
                 placeholder="What are you looking for?"
@@ -65,7 +96,8 @@ export default function SearchBar() {
             />
             <button onClick={handleSearch} >Search</button>
             <div className="searchResults">
-                {loading ? <div>Loading...</div> : <SearchResults resultsArray={shoppingResults} />}
+              {console.log(oneUserData)}
+                {loading ? <div>Loading...</div> : <SearchResults oneUserData={oneUserData} resultsArray={shoppingResults} />}
             </div>
         </div>
        

@@ -2,10 +2,11 @@ import React from 'react'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UserData } from './API/GetUser';
 const API = process.env.REACT_APP_API_URL;
 
 
-function LogIn() {
+function LogIn( { updateData } ) {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -13,17 +14,19 @@ function LogIn() {
   });
 
   const logInUser = (existingUser) => {
-    console.log(existingUser)
     axios
       .post(`${API}/login`, existingUser)
       .then(
       (res) => {
-      // navigate(`/about`);
+        updateData(res.data)
+        navigate(`/search`);
       })
       .catch((c) => {
         console.error("catch", c)
       });
   };
+
+
 
     // If email was previouls used, it will not work
   const handleTextChange = (event) => {
@@ -36,42 +39,40 @@ function LogIn() {
   };
 
   return (
-    <div className="row justify-content-md-center">
-      <div className="col-md-auto">
-        <h1>Log In</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-auto">
-              <div className="form-floating">
-                <label htmlFor="email">Email: </label>
-                <input
-                id="email" 
-                type="email" 
-                value={user.email}
-                onChange={handleTextChange}
-                className="form-control" 
-                placeholder="email:"
-                required
-                />
-              </div>
-                <br></br>
-              <div className="form-check form-switch">
-                <label className="form-check-label" htmlFor="password">Password: </label>
-                <input 
-                id="password"
-                type="password" 
-                value={user.password}
-                checked={user.password}
-                onChange={handleTextChange}
-                className="form-check-input" 
-                />
-              </div>
-                <br></br>
-              <input type="submit" />
-            </div>
-          </div>
-        </form>
-      </div>
+    <div className="wrapper">
+      <h2>Log In</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="input-box">
+          <label htmlFor="email">Email: </label>
+          <input
+          id="email" 
+          type="email" 
+          value={user.email}
+          onChange={handleTextChange}
+          className="form-control" 
+          placeholder="email:"
+          required
+          />
+        </div>
+          <br></br>
+        <div className="input-box">
+          <label className="form-check-label" htmlFor="password">Password: </label>
+          <input 
+          id="password"
+          type="password" 
+          value={user.password}
+          onChange={handleTextChange}
+          className="form-check-input" 
+          />
+        </div>
+          <br></br>
+        <div className="input-box button">
+          <input type="submit" />
+        </div>
+      </form>
+      <div className="text">
+          <h3>Dont Have An Account? <a href="/register">Register</a></h3>
+        </div>
     </div>
   )
 }
