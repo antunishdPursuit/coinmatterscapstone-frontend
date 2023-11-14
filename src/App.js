@@ -5,11 +5,7 @@ import React, { useState } from "react";
 
 // PAGES
 import Home from "./Pages/Home";
-// import Edit from "./Pages/Edit";
-// import Error from "./Pages/ErrorPage";
-// import Index from "./Pages/Index";
-// import New from "./Pages/New";
-// import Show from "./Pages/Show";
+import Results from "./Pages/Results"
 
 // COMPONENTS
 import NavBar from "./Components/NavBar";
