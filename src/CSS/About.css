@@ -1,0 +1,65 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.about-banner {
+  background-color: #f277c5;
+  color: black;
+  text-align: center;
+  padding: 3%;
+}
+
+.about-banner h1 {
+  font-size: 3.5rem;
+  font-family: "Snell Roundhand", cursive; 
+  margin: 0;
+}
+
+.about-banner img {
+  max-width: 100px; 
+  position: center;
+  border-radius: 50%;
+}
+
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+/* .team-member {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px;
+  max-width: 300px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} */
+.team-member {
+  text-align: center;
+  margin: 20px;
+  max-width: 300px;
+  padding-top: 50px;
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links a {
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 1.2rem;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
