@@ -99,6 +99,50 @@ export default [
         "rating": 4.7,
         "delivery_options": "Free delivery",
         "delivery_options_extracted_price": 0
+      },
+      {
+        "position": 24,
+        "docid": "10541115615635167879",
+        "link": "https://www.google.com/shopping/product/8755489840481504774?q=NintendoSwitch&prds=eto:17439543903657445874_0,pid:10541115615635167879,rsk:PC_12361402487756646367&sa=X&ved=0ahUKEwijxKvrkLb8AhXDi7AFHTqzCsQQ8wII4BA",
+        "title": "Nintendo Switch Lite - Turquoise",
+        "source": "Amazon.com - Seller",
+        "price": "$184.99",
+        "extracted_price": 184.99,
+        "thumbnail": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTQ-bKDowxs2i9RV3TopKjZ2uG26CDAP-Xcj0OAZHagfy-Vr_iJ9gyfXX52qk2-RgSdRqBFXAyVyGjbQn-1RI5a7v2aBI4-kHj1W_19QnLu9nltQFEmEbQboec&usqp=CAE",
+        "product_href": "https://www.google.com/shopping/product/8755489840481504774?q=NintendoSwitch&prds=eto:17439543903657445874_0,pid:10541115615635167879,rsk:PC_12361402487756646367&sa=X&ved=0ahUKEwijxKvrkLb8AhXDi7AFHTqzCsQQ8gII3RAoAA",
+        "product_id": "8755489840481504774",
+        "rating": 4.8,
+        "delivery_options": "Free delivery",
+        "delivery_options_extracted_price": 0
+      },
+      {
+        "position": 60,
+        "docid": "8447727993962324072",
+        "link": "https://www.google.com/shopping/product/375801010272763284?q=NintendoSwitch&prds=eto:18348620476258851747_0,pid:8447727993962324072,rsk:PC_11357056235034102526&sa=X&ved=0ahUKEwijxKvrkLb8AhXDi7AFHTqzCsQQ8wIIlxU",
+        "title": "Nintendo Switch - Neon Red and Neon Blue Joy-Con (Renewed)",
+        "source": "Amazon.com - Seller",
+        "price": "$338.00",
+        "extracted_price": 338,
+        "thumbnail": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQr_gOymngBydAaboetdRYmQeGVtA7TmEGZNJ7K6LKPYL2IM3m7KW3kdUfaWUaHjTWLiEEgTLuKEOD2mXLIT1eGH8MOh3dE-sS3-Y8dxRMJ7L0LnHs5Uyv4XA&usqp=CAE",
+        "product_href": "https://www.google.com/shopping/product/375801010272763284?q=NintendoSwitch&prds=eto:18348620476258851747_0,pid:8447727993962324072,rsk:PC_11357056235034102526&sa=X&ved=0ahUKEwijxKvrkLb8AhXDi7AFHTqzCsQQ8gIIlBUoAA",
+        "product_id": "375801010272763284",
+        "rating": 4.7,
+        "delivery_options": "Free delivery",
+        "delivery_options_extracted_price": 0
+      },
+      {
+        "position": 60,
+        "docid": "8447727993962324073",
+        "link": "https://www.google.com/shopping/product/375801010272763284?q=NintendoSwitch&prds=eto:18348620476258851747_0,pid:8447727993962324072,rsk:PC_11357056235034102526&sa=X&ved=0ahUKEwijxKvrkLb8AhXDi7AFHTqzCsQQ8wIIlxU",
+        "title": "Nintendo Switch - Neon Red and Neon Blue Joy-Con (Renewed)",
+        "source": "Amazon.com - Seller",
+        "price": "$338.00",
+        "extracted_price": 338,
+        "thumbnail": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQr_gOymngBydAaboetdRYmQeGVtA7TmEGZNJ7K6LKPYL2IM3m7KW3kdUfaWUaHjTWLiEEgTLuKEOD2mXLIT1eGH8MOh3dE-sS3-Y8dxRMJ7L0LnHs5Uyv4XA&usqp=CAE",
+        "product_href": "https://www.google.com/shopping/product/375801010272763284?q=NintendoSwitch&prds=eto:18348620476258851747_0,pid:8447727993962324072,rsk:PC_11357056235034102526&sa=X&ved=0ahUKEwijxKvrkLb8AhXDi7AFHTqzCsQQ8gIIlBUoAA",
+        "product_id": "375801010272763284",
+        "rating": 4.7,
+        "delivery_options": "Free delivery",
+        "delivery_options_extracted_price": 0
       }
-  
 ];

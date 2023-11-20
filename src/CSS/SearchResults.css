@@ -3,13 +3,13 @@
     justify-content: center;
 }
 
-.results-container {
+.store-carousel {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     max-width: 100%;
     padding: 0 16px;
-    border: 10px solid rgb(181, 78, 161);
+    border: 5px solid rgb(181, 78, 161);
 }
 
 @media (max-width: 768px) {
@@ -36,6 +36,9 @@
 }
 
 .store-options {
+    max-height: 600px;
+    border: 5px solid rgb(195, 255, 0);
+    overflow-y: auto;
 
 }
 .item-container {
@@ -67,5 +70,5 @@
 }
 
 .item-price {
-    margin: ;
+    margin: 0px 10px;
 }
