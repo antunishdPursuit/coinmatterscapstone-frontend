@@ -1,4 +1,5 @@
 // DEPENDENCIES
+import axios from "axios";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 import Results from "./Pages/Results";
@@ -9,7 +10,10 @@ import About from "./Pages/About";
 import Landing from "./Components/Landing/Landing";
 import Register from "./Components/Landing/Register";
 import LogIn from "./Components/Landing/LogIn";
-import SearchBar from "./Pages/Search";
+import SearchBar from "./Pages/Search"
+import Cart from "./Pages/Cart"
+import UserList from "./Components/Searches/UserList";
+
 
 function App() {
   const [sharedData, setSharedData] = useState({});
@@ -43,6 +47,7 @@ function App() {
                 </>
               }
             />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/register" element={<Register />} />
             <Route
               path="/login"

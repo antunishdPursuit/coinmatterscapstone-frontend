@@ -1,20 +1,28 @@
 
-.search-bar-container {
+/* .search-bar-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
     height: 100vh;
-}
+    z-index: 2;
+    position: absolute;
+    transform: translateX(-50%);
+} */
 
-.search-page-container {
+/* Notes: I wanted to reuse the searchBar so I moved the messages div from searchResults to Results pages and put it on top of the background image via z-index 1 and then I put the search-bar-container div on top of the page and in front of all divs using z-indez 2. 
+
+**** In ordered for z-index property to work the elements need to be positioned using position: relative, position: absolute, or position: fixed.
+*/
+/* 
+.page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
     height: 100vh;
-    position: relative;
-  }
+    position: absolute;
+}
 
 .background-img-container {
     display: flex;
@@ -37,12 +45,19 @@
 .search-bar {
     padding-top: 60px;
 }
+*/
 
 .search-bar-bar {
     font-family: 'Roboto', sans-serif;
-    font-size: larger;
-    border-radius: 20px;
-    padding: 5px 20px;
+    /* font-size: larger; */
+    border-radius: 10px;
+    padding: 2px 20px;
+    margin-left: 5px;
+    text-align: left;
+}
+
+.search-bar-bar::placeholder {
+    font-style: italic;
 }
 
 .search-button {
@@ -51,15 +66,23 @@
     
 }
 
+/*
 .message {
-    padding-top: 300px;
-    display: flex;
-    align-items: center;
-}
+    padding-top: 200px;
+    position: absolute;
+    top:30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    height: 1%;
+    z-index: 1;
+    /* border: 10px solid pink; 
 
-.message ul li {
+}
+/*  */
+/* .message ul li {
     list-style: none;
     text-align: center;
     font-size: 70px;
     font-weight: 600;
-}
+}   */

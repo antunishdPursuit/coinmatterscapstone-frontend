@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../CSS/Search.css";
+// import "../../CSS/Search.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -123,14 +123,12 @@ export default function SearchBar() {
             <button onClick={LogOut}>Logout</button>
             <input className="search-bar-bar"
                 type="text"
-                placeholder="Search"
+                placeholder="Enter your zip code"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                style={{ textAlign: "center" }}
             />
             <button className="search-button" onClick={handleSearch}><FontAwesomeIcon icon={faSearch} size="lg" style={{color: "#231a1f",fontSize: "24px", fontWeight: "bold"}} /></button>
           </div>
-          
           <div className="message">
               <ul>
                 <li>What's on your list{oneUserData ? ", " + oneUserData.username: ''}?</li>
@@ -138,6 +136,5 @@ export default function SearchBar() {
               </ul>
           </div>
         </div>
-       
     );
 };
