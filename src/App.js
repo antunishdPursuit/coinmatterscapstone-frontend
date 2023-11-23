@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 
 // PAGES
-import Home from "./Pages/Home";
 import Results from "./Pages/Results"
 
 // COMPONENTS
@@ -21,6 +20,7 @@ function App() {
   const updateData = newData => {
     setSharedData(newData);
   };
+  
 
   return (
     <div className="app">
@@ -30,7 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing sharedData={sharedData}/>} />
             <Route path="/about" element={<About/>} />
-            <Route path="/search" element={<SearchBar sharedData={sharedData} updateData={updateData} />} />
+            <Route path="/search" element={<SearchBar />} />
             <Route path="/search-results/:query" element={<Results />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LogIn sharedData={sharedData} updateData={updateData}/>} />
