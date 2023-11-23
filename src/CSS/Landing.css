@@ -2,11 +2,10 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 20px;
 }
 
 .logo-container {
-  flex: 0 0 auto; 
+  flex: 0 0 auto;
   margin-right: 50%;
 }
 /* Style the logo */
@@ -32,7 +31,6 @@
 }
 
 .landing-wrapper {
-  position: absolute;
   top: 5;
   right: 0;
   bottom: 0;
@@ -44,8 +42,6 @@
   background-position: 180% center;
   padding: 0;
 }
-
-
 
 .big-pink {
   font-size: 170px;
@@ -62,12 +58,10 @@
   margin: 0;
 }
 .info-box {
-  background-color: #f9f9f9;
   padding: 5%;
   text-align: left;
   overflow-wrap: break-word;
   width: 600px;
-  /* height: 250px; */
 }
 .outlined-text {
   font-size: 170px;
@@ -105,10 +99,11 @@
   color: black;
 }
 
-#MainText{
-  font-family: "Montserrat", sans-serif;
-  color: rgb(249, 66, 176);
-
+#MainText {
+  font-family: "Courgette", cursive;
+  font-family: "DM Serif Display", serif;
+  line-height: 1.5;
+  text-align: justify;
 }
 /* Responsive styles for medium-sized screens (e.g., tablets) */
 @media (max-width: 768px) {
