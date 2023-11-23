@@ -16,6 +16,7 @@ function NavBar() {
         <span className="nav-title">CoinMatters</span>
       </div>
       <div className="links">
+        <Link to="search">Search</Link>
         <Link to="/aboutUs">About Us</Link>
         <Link to="/membership">Membership</Link>
         <Link to="/contact">Contact</Link>

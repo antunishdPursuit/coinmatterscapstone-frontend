@@ -1,9 +1,6 @@
 // DEPENDENCIES
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
-
-// PAGES
 import Results from "./Pages/Results";
 
 // COMPONENTS
@@ -20,6 +17,7 @@ function App() {
   const updateData = (newData) => {
     setSharedData(newData);
   };
+  
 
   return (
     <div className="app">

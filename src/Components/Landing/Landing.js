@@ -1,9 +1,10 @@
-import React from "react";
+
 import "../../CSS/Landing.css";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie"
 import logo from "./logo.png"
+function Landing() {
 
-function Landing({ sharedData }) {
   return (
     <div className="landing-wrapper">
       <div className="header">
@@ -26,7 +27,7 @@ function Landing({ sharedData }) {
           transform your shopping experience.
         </h3>
       </div>
-      {!sharedData ? (
+      {!Cookies.get("dataToken") ? (
         <div className="buttons">
           <Link to="/register">
             <button className="register-button">Register</button>

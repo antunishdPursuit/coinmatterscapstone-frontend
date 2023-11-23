@@ -13,9 +13,13 @@ function Register() {
       password: "",
     });
 
+    const instance = axios.create({
+      withCredentials: true,
+   })
+
     const addUser = (newUser) => {
         console.log(newUser)
-        axios
+        instance
           .post(`${API}/register`, newUser)
           .then(
           (res) => {

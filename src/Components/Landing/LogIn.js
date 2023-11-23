@@ -2,31 +2,31 @@ import React from 'react'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { UserData } from './API/GetUser';
 const API = process.env.REACT_APP_API_URL;
 
 
-function LogIn( { updateData } ) {
+function LogIn() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
+  const instance = axios.create({
+    withCredentials: true,
+ })
+
   const logInUser = (existingUser) => {
-    axios
+    instance
       .post(`${API}/login`, existingUser)
       .then(
       (res) => {
-        updateData(res.data)
         navigate(`/search`);
       })
       .catch((c) => {
         console.error("catch", c)
       });
   };
-
-
 
     // If email was previouls used, it will not work
   const handleTextChange = (event) => {
