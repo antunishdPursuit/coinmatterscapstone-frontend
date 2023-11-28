@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SearchBar from "./SearchBar";
+import SearchBar from "./oldSearchBar";
 import "../../CSS/SearchPage.css"
 
 export default function UserList() {
@@ -21,6 +21,8 @@ export default function UserList() {
             }
         };
     };
+
+    console.log(itemList);
 
     return (
         <div className="search-page-container">
@@ -56,7 +58,7 @@ export default function UserList() {
                 </div>
                 <div className="zip-search">
                     zip code
-                    <SearchBar />
+                    <SearchBar userList = {itemList}/>
                 </div>
                 <div className="buttons">
                     <button>Save my list</button>
