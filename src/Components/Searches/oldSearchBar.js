@@ -11,7 +11,7 @@ import mockData from "./mockData";
 const API = process.env.REACT_APP_API_URL;
 
 
-export default function SearchBar(props) {
+export default function SearchBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [oneUserData, setOneUserData] = useState('')
