@@ -1,4 +1,4 @@
-import SearchBar from "../Components/Searches/SearchBar";
+import SearchBar from "../Components/Searches/oldSearchBar";
 import logo from "../Images/pig-background.png"
 // import "../CSS/Search.css";
 

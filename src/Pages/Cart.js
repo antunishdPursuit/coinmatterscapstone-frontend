@@ -1,4 +1,4 @@
-import SearchBar from "../Components/Searches/SearchBar";
+import SearchBar from "../Components/Searches/oldSearchBar";
 import CompareCarts from "../Components/CompareCarts";
 import "../CSS/Search.css"
 
