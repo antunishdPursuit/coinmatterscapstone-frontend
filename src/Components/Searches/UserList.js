@@ -102,10 +102,6 @@ export default function UserList() {
                     zip code
                     <SearchBar userList={itemList} onSearch={findCheapestOptions} />
                 </div>
-                <div className="buttons">
-                    <button>Save my list</button>
-                    <button>Find my deals</button>
-                </div>
             </div>
             <div className="deals-container">
                 <h3>Your Options</h3>

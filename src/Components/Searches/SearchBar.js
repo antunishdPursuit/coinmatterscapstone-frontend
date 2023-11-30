@@ -31,7 +31,10 @@ export default function SearchBar({ userList, onSearch }) {
                 value={zipcode}
                 onChange={(e) => setZipcode(e.target.value)}
             />
-            <button className="search-button" onClick={handleSearch}><FontAwesomeIcon icon={faSearch} size="lg" style={{color: "#231a1f",fontSize: "24px", fontWeight: "bold"}} /></button>
+            <div className="buttons">
+                    <button>Save my list</button>
+                    <button className="search-button" onClick={handleSearch}>Find my deals</button>
+            </div>
           </div>
           <div className="message">
               <ul>
