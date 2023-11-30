@@ -1,4 +1,4 @@
-  export default {
+const mockData = {
     "ctown": {
       "zipcodes": ["10456", "10462", "11101", "10029"],
       "products": 
@@ -538,3 +538,5 @@
       ]
     }
   }
+
+export default mockData

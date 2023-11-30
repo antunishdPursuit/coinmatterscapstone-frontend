@@ -61,7 +61,7 @@ export default function UserList() {
             });
         });
         console.log(cheapestOptions);
-        return cheapestOptions;
+        return setCheapestOptions(cheapestOptions);
     };
 
 
