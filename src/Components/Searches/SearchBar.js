@@ -1,9 +1,9 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 // import "../../CSS/Search.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
 // import UserList from "./UserList";
 
 
