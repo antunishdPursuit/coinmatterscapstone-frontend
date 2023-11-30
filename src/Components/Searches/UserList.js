@@ -1,12 +1,18 @@
 import { useState } from "react";
-import SearchBar from "./oldSearchBar";
+import SearchBar from "./SearchBar";
+// import SearchResults from "./SearchResults";
 import "../../CSS/SearchPage.css"
+
+//mock data 
+import storeData from "./mockData";
+import SearchResults from "./SearchResults";
 
 export default function UserList() {
 
     const [inputValue, setInputValue] = useState("");
     const [itemList, setItemList] = useState([]);
     const [errorMessage, setErrorMessage] = useState("")
+    const [cheapestOptions, setCheapestOptions] = useState({});
 
     const addItem = () => {
         if (inputValue.trim() !== '') {
@@ -22,7 +28,43 @@ export default function UserList() {
         };
     };
 
-    console.log(itemList);
+    const findCheapestOptions = (userList, zipcode) => {
+        //this function filters stores in a specific area when a user enters their zip  
+        const validStores = Object.keys(storeData).filter(store => storeData[store].zipcodes.includes(zipcode));
+
+        if (validStores.length === 0) {
+            return {}; // No valid stores found
+        }
+
+        //now that we have the stores in a specific location we will iterate over them; checking for the cheapest item(s) that closely match user's list
+        validStores.forEach(store => {
+            cheapestOptions[store] = [];
+
+            //iterate over each item in the user's list
+            userList.forEach(item => {
+                const storeProducts = storeData[store].products.filter (product => product.title.toLowerCase().includes(item.toLowerCase())
+                );
+
+                //find the cheapest product among the matching products
+                if (storeProducts.length > 0) {
+                    const cheapestProduct = storeProducts.reduce((min, product) =>  {
+                        return product.price < min.price? product : min
+                    }, storeProducts[0]);
+
+                    //push the cheapest product into the cheapestOptions[store] array
+                    cheapestOptions[store].push({ 
+                        item: cheapestProduct.title, 
+                        price: cheapestProduct.price, 
+                        image: cheapestProduct.thumbnail 
+                    });
+                }
+            });
+        });
+        console.log(cheapestOptions);
+        return cheapestOptions;
+    };
+
+
 
     return (
         <div className="search-page-container">
@@ -58,7 +100,7 @@ export default function UserList() {
                 </div>
                 <div className="zip-search">
                     zip code
-                    <SearchBar userList = {itemList}/>
+                    <SearchBar userList={itemList} onSearch={findCheapestOptions} />
                 </div>
                 <div className="buttons">
                     <button>Save my list</button>
@@ -68,7 +110,7 @@ export default function UserList() {
             <div className="deals-container">
                 <h3>Your Options</h3>
                 <div className="options-container">
-                    user results go here 
+                    <SearchResults cheapestOptions={cheapestOptions}/> 
                 </div>
             </div>
         </div>
