@@ -1,10 +1,10 @@
 // DEPENDENCIES
-import axios from "axios";
+// import axios from "axios";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 
 // PAGES
-import Home from "./Pages/Home";
+// import Home from "./Pages/Home";
 import Results from "./Pages/Results"
 
 // COMPONENTS
@@ -13,7 +13,7 @@ import About from "./Pages/About"
 import Landing from "./Components/Landing/Landing";
 import Register from "./Components/Landing/Register";
 import LogIn from "./Components/Landing/LogIn";
-import SearchBar from "./Pages/Search"
+// import SearchBar from "./Pages/Search"
 import Cart from "./Pages/Cart"
 import UserList from "./Components/Searches/UserList";
 

@@ -68,6 +68,7 @@ export default function SearchBar() {
       .post(`${API}/logout`, {}, { withCredentials: true })
       .then((res) => {
         console.log(res.data)
+        console.log(oneUserData)
         navigate("/")
       })
       .catch((error) => {
