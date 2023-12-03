@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 // import SearchResults from "./SearchResults";
 import "../../CSS/SearchPage.css"
@@ -28,20 +28,21 @@ export default function UserList() {
         };
     };
 
-    const findCheapestOptions = (userList, zipcode) => {
+    const findCheapestOptions = (itemList, zipcode) => {
+        const updatedCheapestOptions = { ...cheapestOptions };
+
         //this function filters stores in a specific area when a user enters their zip  
         const validStores = Object.keys(storeData).filter(store => storeData[store].zipcodes.includes(zipcode));
-
         if (validStores.length === 0) {
             return {}; // No valid stores found
         }
 
         //now that we have the stores in a specific location we will iterate over them; checking for the cheapest item(s) that closely match user's list
         validStores.forEach(store => {
-            cheapestOptions[store] = [];
+            updatedCheapestOptions[store] = [];
 
             //iterate over each item in the user's list
-            userList.forEach(item => {
+            itemList.forEach(item => {
                 const storeProducts = storeData[store].products.filter (product => product.title.toLowerCase().includes(item.toLowerCase())
                 );
 
@@ -52,7 +53,7 @@ export default function UserList() {
                     }, storeProducts[0]);
 
                     //push the cheapest product into the cheapestOptions[store] array
-                    cheapestOptions[store].push({ 
+                    updatedCheapestOptions[store].push({ 
                         item: cheapestProduct.title, 
                         price: cheapestProduct.price, 
                         image: cheapestProduct.thumbnail 
@@ -60,9 +61,13 @@ export default function UserList() {
                 }
             });
         });
-        console.log(cheapestOptions);
-        return setCheapestOptions(cheapestOptions);
+        setCheapestOptions(updatedCheapestOptions);
+        return updatedCheapestOptions, itemList;
     };
+
+    
+
+   
 
 
 
