@@ -1,8 +1,6 @@
 import "../../CSS/SearchResults.css"
 
 export default function SearchResults({ cheapestOptions }) {
-  console.log(cheapestOptions);
-  
     return (
         <div className="result-page">
             <div className="results-container">

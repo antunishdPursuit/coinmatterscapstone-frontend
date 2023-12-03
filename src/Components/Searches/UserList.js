@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import  { useState } from "react";
 import SearchBar from "./SearchBar";
 // import SearchResults from "./SearchResults";
 import "../../CSS/SearchPage.css"
@@ -62,7 +62,6 @@ export default function UserList() {
             });
         });
         setCheapestOptions(updatedCheapestOptions);
-        return updatedCheapestOptions, itemList;
     };
 
     
