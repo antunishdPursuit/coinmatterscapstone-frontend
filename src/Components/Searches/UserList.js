@@ -11,7 +11,8 @@ export default function UserList() {
 
     const [inputValue, setInputValue] = useState("");
     const [itemList, setItemList] = useState([]);
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("");
+    const [areaMessage, setAreaMessage] = useState("Start your search here");
     const [cheapestOptions, setCheapestOptions] = useState({});
 
     const addItem = () => {
@@ -28,13 +29,20 @@ export default function UserList() {
         };
     };
 
+    const removeListItem = (removedItem) => {
+        const updatedList = itemList.filter((item)=> item.toLowerCase() !== removedItem.toLowerCase());
+        setItemList(updatedList);
+    }
+
     const findCheapestOptions = (itemList, zipcode) => {
         const updatedCheapestOptions = { ...cheapestOptions };
 
         //this function filters stores in a specific area when a user enters their zip  
         const validStores = Object.keys(storeData).filter(store => storeData[store].zipcodes.includes(zipcode));
         if (validStores.length === 0) {
-            return {}; // No valid stores found
+            setCheapestOptions({});
+            setAreaMessage("Sorry, at the moment we do not have store details for that zip code yet. We are working on expanding our location coverage. Please check back soon.")
+            return; // No valid stores found
         }
 
         //now that we have the stores in a specific location we will iterate over them; checking for the cheapest item(s) that closely match user's list
@@ -43,7 +51,7 @@ export default function UserList() {
 
             //iterate over each item in the user's list
             itemList.forEach(item => {
-                const storeProducts = storeData[store].products.filter (product => product.title.toLowerCase().includes(item.toLowerCase())
+                const storeProducts = storeData[store].products.filter(product => product.title.toLowerCase().includes(item.toLowerCase())
                 );
 
                 //find the cheapest product among the matching products
@@ -58,16 +66,16 @@ export default function UserList() {
                         price: cheapestProduct.price, 
                         image: cheapestProduct.thumbnail 
                     });
+                } else {
+                    updatedCheapestOptions[store].push({ 
+                        item: `sorry, our list for ${store} doesn't have ${item}.`,
+                        image: "https://cdn3.iconfinder.com/data/icons/shopping-and-ecommerce-29/90/not_available-512.png",  
+                    });
                 }
             });
         });
         setCheapestOptions(updatedCheapestOptions);
     };
-
-    
-
-   
-
 
 
     return (
@@ -98,7 +106,11 @@ export default function UserList() {
                 <div className="user-list">
                     <ul>
                         {itemList.map((item, i) => (
+                        <>
                             <li key={i}>{item}</li>
+                            <button key ={i} onClick={() => removeListItem(item)}>-</button>
+                        </>
+                            
                         ))}
                     </ul>
                 </div>
@@ -110,7 +122,7 @@ export default function UserList() {
             <div className="deals-container">
                 <h3>Your Options</h3>
                 <div className="options-container">
-                    <SearchResults cheapestOptions={cheapestOptions}/> 
+                    <SearchResults cheapestOptions={cheapestOptions} areaMessage={areaMessage}/> 
                 </div>
             </div>
         </div>

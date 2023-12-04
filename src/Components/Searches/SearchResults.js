@@ -1,6 +1,12 @@
+
+import { useEffect } from "react";
 import "../../CSS/SearchResults.css"
 
-export default function SearchResults({ cheapestOptions }) {
+export default function SearchResults({ cheapestOptions, areaMessage }) {
+  useEffect(() => {
+    console.log('Cheapest options updated:', cheapestOptions);
+  }, [cheapestOptions]);
+
     return (
         <div className="result-page">
             <div className="results-container">
@@ -27,11 +33,10 @@ export default function SearchResults({ cheapestOptions }) {
           </div>
         ))
       ) : (
-        <div>No results found</div>
+        <div>{areaMessage}</div>
       )}
             </div>
         </div>
-  );
-            
+  );          
 }
 
