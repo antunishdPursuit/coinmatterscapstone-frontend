@@ -1,5 +1,5 @@
 const mockData = {
-    "ctown": {
+    "CTown": {
       "zipcodes": ["10456", "10462", "11101", "10029"],
       "products": 
       [
@@ -167,7 +167,7 @@ const mockData = {
         }     
       ]
     },
-    "target": {
+    "Target": {
       "zipcodes": ["10456", "10462", "11101", "10029"],
       "products": [
         {
@@ -334,7 +334,7 @@ const mockData = {
         }
       ]
     },
-    "walmart": {
+    "Walmart": {
       "zipcodes": ["10456", "10462", "11101", "10029"],
       "products": [
         {
