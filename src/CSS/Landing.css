@@ -72,7 +72,7 @@
   -webkit-text-stroke: 2px rgb(249, 66, 176);
   font-family: "Montserrat", sans-serif;
 }
-.buttons {
+.btns {
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
