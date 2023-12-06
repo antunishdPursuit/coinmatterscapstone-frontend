@@ -38,10 +38,10 @@
     border-top-left-radius: 10px;
     display: flex;
     justify-content: center;
-    padding: 10px;
-    width: 90%;
+    width: 100%;
+    padding: 10px 0px;
     background-color: rgb(255, 152, 216);
-    color: rgb(23, 23, 23);
+    color: rgb(2, 1, 1);
 }
 
 .store-results {
@@ -55,7 +55,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 2px solid rgb(242, 168, 240);
+    border-bottom: 1px solid rgb(255, 9, 206);
 }
 
 .item {
@@ -83,6 +83,7 @@
 }
 
 .item ul li:last-child {
+    padding-left: 2px;
     width: 110px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: rgb(249, 243, 236);
