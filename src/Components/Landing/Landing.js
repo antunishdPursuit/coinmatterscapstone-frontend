@@ -1,15 +1,7 @@
 import { Link } from "react-router-dom";
-import logo from "./logo.png"
 import "../../CSS/Landing.css";
-import { useEffect } from "react";
 
-function Landing({ updateData }) {
-
-  useEffect(() => {
-    updateData()
-  }, [])
-  
-
+function Landing() {
   return (
     <div className="landing-wrapper">
       <p className="centered outlined-text no-margin">Save Time</p>
@@ -23,8 +15,8 @@ function Landing({ updateData }) {
           transform your shopping experience.
         </h3>
       </div>
-      {sessionStorage.getItem("LoggenIn") == "True" ? (
-       <p>Soon to be link to user page</p>
+      {sessionStorage.getItem("LoggenIn") === "True" ? (
+       <Link to="">User</Link>
       ) : (
         <div className="buttons">
         <Link to="/register">

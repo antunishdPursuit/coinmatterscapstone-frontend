@@ -6,7 +6,7 @@ import "../../CSS/Register.css"
 
 const API = process.env.REACT_APP_API_URL;
 
-function LogIn() {
+function LogIn({ updateData }) {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -22,7 +22,8 @@ function LogIn() {
       .post(`${API}/login`, existingUser)
       .then(
       (res) => {
-        navigate(`/login`);
+        updateData()
+        navigate(`/`);
       })
       .catch((c) => {
         console.error("catch", c)
