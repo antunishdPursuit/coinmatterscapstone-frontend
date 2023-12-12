@@ -32,13 +32,9 @@ export default function SearchBar({ userList, onSearch }) {
                 onChange={(e) => setZipcode(e.target.value)}
             />
             <div className="buttons">
-                    <button>Save my list</button>
-                    <button className="search-button" onClick={handleSearch}>Find my deals</button>
+                    <button className="btn-1">Save my list</button>
+                    <button className="btn-2" onClick={handleSearch}>Find my deals</button>
             </div>
-          </div>
-          <div className="message">
-              <ul>
-              </ul>
           </div>
         </div>
     );

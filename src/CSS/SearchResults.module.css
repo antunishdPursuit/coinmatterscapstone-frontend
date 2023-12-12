@@ -1,0 +1,116 @@
+.result-page{
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .results-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .results-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.results-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.store-container {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 560px;
+    flex: 1;
+}
+
+.store-logo {
+    border: 0.5px solid black;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0px;
+    background-color: rgb(255, 152, 216);
+    color: rgb(2, 1, 1);
+}
+
+.store-results {
+    /* border: 5px solid rgb(195, 255, 0); */
+    overflow-y: auto;
+    border-top: 1px solid black;
+    padding-bottom: 40px;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid rgb(255, 9, 206);
+}
+
+.item {
+    /* border: 2px solid rgb(0, 255, 225); */
+    height: 180px;
+    padding: px
+}
+.item ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.item ul li {
+    list-style: none;
+    /* border: 2px solid rgb(255, 0, 153); */
+}
+
+.item ul li:first-child {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 100px;
+    margin-bottom: 5px;
+}
+
+.item ul li:last-child {
+    padding-left: 2px;
+    width: 110px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(249, 243, 236);
+}
+
+.item ul li p {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.item img {
+    width:100%;
+}
+
+.item-price {
+    margin: 0px 10px;
+}
+
+.empty-results {
+    border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.empty-results img {
+    width: 300px;
+    opacity: 0.7;
+}
