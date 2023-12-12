@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Register.css"
+import "../../CSS/Register.css"
+
 const API = process.env.REACT_APP_API_URL;
 
 function Register() {
@@ -42,9 +43,9 @@ function Register() {
 
   return (
     <div className="wrapper">
-      <h2>New User</h2>
+      <h1>Register</h1>
       <div className="text">
-          <h3>An account will allow you to save lists for future reference</h3>
+          <h4>An account will allow you to save lists for future reference</h4>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="input-box">
@@ -55,7 +56,7 @@ function Register() {
           value={user.username}
           onChange={handleTextChange}
           className="form-control" 
-          placeholder="username:"
+          placeholder=" username:"
           required
           />
         </div>
@@ -68,7 +69,7 @@ function Register() {
           value={user.email}
           onChange={handleTextChange}
           className="form-control" 
-          placeholder="email"
+          placeholder=" email"
           required
           />
         </div>
