@@ -121,7 +121,6 @@ export default function UserList() {
 //         };
 //     }
 
-
     useEffect(() => {
         calculateTotalPrice(cheapestOptions);
 //         bestDeal(totalPrices)
@@ -253,6 +252,7 @@ export default function UserList() {
                 <h3>Your Options</h3>
                 <SearchResults cheapestOptions={cheapestOptions} areaMessage={areaMessage} totalPrices = {calculateTotalPrice(cheapestOptions)} 
 //                 bestDeal= {bestDeal(totalPrices)}
+
                 /> 
             </div>
         </div>
