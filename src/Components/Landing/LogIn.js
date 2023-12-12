@@ -2,8 +2,9 @@ import React from 'react'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-const API = process.env.REACT_APP_API_URL;
+import "../../CSS/Register.css"
 
+const API = process.env.REACT_APP_API_URL;
 
 function LogIn() {
   const navigate = useNavigate();
@@ -15,13 +16,13 @@ function LogIn() {
   const instance = axios.create({
     withCredentials: true,
  })
-
+ 
   const logInUser = (existingUser) => {
     instance
       .post(`${API}/login`, existingUser)
       .then(
       (res) => {
-        navigate(`/search`);
+        navigate(`/login`);
       })
       .catch((c) => {
         console.error("catch", c)
@@ -44,6 +45,7 @@ function LogIn() {
       <form onSubmit={handleSubmit}>
         <div className="input-box">
           <label htmlFor="email">Email: </label>
+          <br></br>
           <input
           id="email" 
           type="email" 

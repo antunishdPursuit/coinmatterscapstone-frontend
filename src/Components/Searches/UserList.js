@@ -1,5 +1,6 @@
-import  { useState } from "react";
+import  { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
+import axios from "axios";
 import SearchResults from "./SearchResults";
 import "../../CSS/UserList.css";
 import cartIcon from "../../Images/cart-light-icon.png";
@@ -11,6 +12,7 @@ import itemUnavailable from "../../Images/unavailable-item.png";
 //mock data 
 import storeData from "./mockData";
 
+const API = process.env.REACT_APP_API_URL;
 
 export default function UserList() {
     const [inputValue, setInputValue] = useState("");
@@ -18,6 +20,7 @@ export default function UserList() {
     const [errorMessage, setErrorMessage] = useState("");
     const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
+    const [oneUserData, setOneUserData] = useState('')
 
     //this is a hover state for user-friendly interface 
     const [isHovered, setIsHovered] = useState(false);
@@ -86,12 +89,28 @@ export default function UserList() {
         setCheapestOptions(updatedCheapestOptions);
     };
 
+    useEffect(() => {
+        axios
+            .get(`${API}/user`, {
+                withCredentials: true,
+            })
+            .then((res) => {
+                setOneUserData(res.data.authorizedData)
+                console.log(res.data)
+            })
+            .catch((error) => {
+                console.error("catch", error);
+            });
+    }, [])
 
     return (
         <div className="search-page-container">
             <div className="user-list-container">
                 <div className="username">
-                    <h3>Your List</h3>
+                    <h3>{sessionStorage.getItem("LoggenIn") === "True" ? `${oneUserData.username} List` : "Your List"}</h3>
+                
+                    {console.log(oneUserData)}
+                    {console.log(sessionStorage.getItem("LoggenIn") === "True")}
                 </div>
                 <div className="item-search">
                     <input
