@@ -1,11 +1,25 @@
 import React from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import navLogo from "../navLogo.png";
 import "../CSS/NavBar.css";
+import axios from "axios";
+const API = process.env.REACT_APP_API_URL;
 
 function NavBar() {
-  const { username } = useParams();
-  const location = useLocation();
+  const navigate = useNavigate(); 
+  
+  function LogOut(){
+    axios
+    .post(`${API}/logout`, {}, { withCredentials: true })
+    .then((res) => {
+      sessionStorage.clear();
+      window.location.reload();
+      navigate("/")
+    })
+    .catch((error) => {
+      console.error("catch", error);
+    });
+  }
 
   return (
     <nav className="navbar">
@@ -17,13 +31,13 @@ function NavBar() {
       </div>
       <div className="links">
         <Link to="search">Search</Link>
-        <Link to="/aboutUs">About Us</Link>
-        <Link to="/membership">Membership</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/about">About Us</Link>
+        {sessionStorage.getItem("LoggenIn") == "True" ? 
+          <Link onClick={LogOut}>Log Out</Link>
+        : 
+          <Link >Temp</Link>
+        }
       </div>
-      {username && location.pathname.includes("/home/") && (
-        <div className="user-info">Welcome, {username}!</div>
-      )}
     </nav>
   );
 }

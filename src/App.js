@@ -1,10 +1,8 @@
 // DEPENDENCIES
-// import axios from "axios";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React, { useState } from "react";
-
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import axios from "axios";
 // PAGES
-// import Home from "./Pages/Home";
+
 import Results from "./Pages/Results"
 
 // COMPONENTS
@@ -13,15 +11,26 @@ import About from "./Pages/About"
 import Landing from "./Components/Landing/Landing";
 import Register from "./Components/Landing/Register";
 import LogIn from "./Components/Landing/LogIn";
-// import SearchBar from "./Pages/Search"
 import Cart from "./Pages/Cart"
 import UserList from "./Components/Searches/UserList";
 
 function App() {
-  const [sharedData, setSharedData] = useState({})
 
   const updateData = newData => {
-    setSharedData(newData);
+    // Make a request to the server to check for the existence of the HTTP-only cookie
+    console.log("Checking loggined in")
+    axios.get(`${process.env.REACT_APP_API_URL}/check-login`, { withCredentials: true })
+    .then((response) => {
+      // If the server responds with a success status, the cookie exists
+      console.log("Session Storage Set")
+      sessionStorage.setItem("LoggenIn", "True");
+    })
+    .catch((error) => {
+      // If the server responds with an error status, the cookie does not exist
+      console.log("Session Storage Not Set")
+      console.log(sessionStorage.getItem("LoggenIn") === "True")
+      sessionStorage.clear();
+    });
   };
 
   return (
@@ -30,13 +39,27 @@ function App() {
         <NavBar></NavBar>
         <main>
           <Routes>
-            <Route path="/" element={<Landing sharedData={sharedData}/>} />
+            <Route path="/" element={<Landing updateData={updateData}/>} />
             <Route path="/about" element={<About/>} />
-            <Route path="/search" element={<UserList sharedData={sharedData} updateData={updateData} />} />
+            <Route 
+            path="/search" 
+            element={<UserList/>} />
             <Route path="/search-results/:query" element={<Results />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<LogIn sharedData={sharedData} updateData={updateData}/>} />
+            <Route path="/register" 
+            element={sessionStorage.getItem("LoggenIn") === "True" 
+            ?
+            <Navigate to="/"/>
+            :
+             <Register/>} />
+
+            <Route path="/login" 
+            element={sessionStorage.getItem("LoggenIn") === "True" 
+            ?
+            <Navigate to="/"/> 
+            :
+            <LogIn />} />
+            <Route path="/"/>
           </Routes>
         </main>
       </Router>

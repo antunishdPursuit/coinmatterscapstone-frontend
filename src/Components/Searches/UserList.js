@@ -1,18 +1,20 @@
-import  { useState } from "react";
+import  { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
-// import SearchResults from "./SearchResults";
+import axios from "axios";
 import "../../CSS/SearchPage.css"
 
 //mock data 
 import storeData from "./mockData";
 import SearchResults from "./SearchResults";
 
-export default function UserList() {
+const API = process.env.REACT_APP_API_URL;
 
+export default function UserList() {
     const [inputValue, setInputValue] = useState("");
     const [itemList, setItemList] = useState([]);
     const [errorMessage, setErrorMessage] = useState("")
     const [cheapestOptions, setCheapestOptions] = useState({});
+    const [oneUserData, setOneUserData] = useState('')
 
     const addItem = () => {
         if (inputValue.trim() !== '') {
@@ -64,17 +66,28 @@ export default function UserList() {
         setCheapestOptions(updatedCheapestOptions);
     };
 
-    
-
-   
-
-
+    useEffect(() => {
+        axios
+            .get(`${API}/user`, {
+                withCredentials: true,
+            })
+            .then((res) => {
+                setOneUserData(res.data.authorizedData)
+                console.log(res.data)
+            })
+            .catch((error) => {
+                console.error("catch", error);
+            });
+    }, [])
 
     return (
         <div className="search-page-container">
             <div className="user-list-container">
                 <div className="username">
-                    <h3>Your List</h3>
+                    <h3>{sessionStorage.getItem("LoggenIn") === "True" ? `${oneUserData.username} List` : "Your List"}</h3>
+                
+                    {console.log(oneUserData)}
+                    {console.log(sessionStorage.getItem("LoggenIn") === "True")}
                 </div>
                 <div className="item-search">
                     <input
