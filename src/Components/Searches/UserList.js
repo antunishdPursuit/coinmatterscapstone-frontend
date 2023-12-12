@@ -1,19 +1,27 @@
 import  { useState } from "react";
 import SearchBar from "./SearchBar";
-// import SearchResults from "./SearchResults";
-import "../../CSS/SearchPage.css"
+import SearchResults from "./SearchResults";
+import "../../CSS/UserList.css";
+import cartIcon from "../../Images/cart-light-icon.png";
+import cartIconHover from "../../Images/cart-solid-icon.png";
+import circleIcon from "../../Images/circle-minus-light-icon.png";
+import circleIconHover from "../../Images/circle-minus-solid-icon.png";
+import itemUnavailable from "../../Images/unavailable-item.png";
 
 //mock data 
 import storeData from "./mockData";
-import SearchResults from "./SearchResults";
+
 
 export default function UserList() {
-
     const [inputValue, setInputValue] = useState("");
     const [itemList, setItemList] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
-    const [areaMessage, setAreaMessage] = useState("Start your search here");
+    const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
+
+    //this is a hover state for user-friendly interface 
+    const [isHovered, setIsHovered] = useState(false);
+    const [isMinusHovered, setIsMinusHovered] = useState(Array(itemList.length).fill(false));
 
     const addItem = () => {
         if (inputValue.trim() !== '') {
@@ -69,7 +77,8 @@ export default function UserList() {
                 } else {
                     updatedCheapestOptions[store].push({ 
                         item: `sorry, our list for ${store} doesn't have ${item}.`,
-                        image: "https://cdn3.iconfinder.com/data/icons/shopping-and-ecommerce-29/90/not_available-512.png",  
+                        image: itemUnavailable,
+                        className: 'unavailable-item',
                     });
                 }
             });
@@ -94,7 +103,12 @@ export default function UserList() {
                         required
                         // style={{ textAlign: "center" }}
                     />
-                    <button onClick={addItem}>+</button>
+                    <button style={{ all: 'unset' }} className="list-icon" onClick={addItem} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+                        <img
+                            src={isHovered ? cartIconHover : cartIcon }
+                            alt="cart icon"
+                        />
+                    </button>
                 </div>
                 <div className="error-message">
                     {errorMessage && (
@@ -103,27 +117,48 @@ export default function UserList() {
                         </div>
                     )}
                 </div>
-                <div className="user-list">
-                    <ul>
-                        {itemList.map((item, i) => (
-                        <>
-                            <li key={i}>{item}</li>
-                            <button key ={i} onClick={() => removeListItem(item)}>-</button>
-                        </>
-                            
-                        ))}
-                    </ul>
-                </div>
-                <div className="zip-search">
-                    zip code
-                    <SearchBar userList={itemList} onSearch={findCheapestOptions} />
+                <div className="user-box">
+                    <div className="user-list">
+                        <ul>
+                            {itemList.map((item, i) => (
+                            <>
+                                <div className="item">
+                                    <li key={i}>{item}</li>
+                                    <button 
+                                        className="list-icon" 
+                                        key ={i}
+                                        style={{all: "unset"}} 
+                                        onMouseEnter={() => {
+                                            const newHoverStates = [...isMinusHovered];
+                                            newHoverStates[i] = true;
+                                            setIsMinusHovered(newHoverStates);
+                                        }}
+                                        onMouseLeave={() => {
+                                            const newHoverStates = [...isMinusHovered];
+                                            newHoverStates[i] = false;
+                                            setIsMinusHovered(newHoverStates);
+                                        }}
+                                        onClick={() => removeListItem(item)}>
+                                        <img 
+                                            src={isMinusHovered[i] ? circleIconHover : circleIcon}
+                                            alt="minus icon"
+                                        />
+                                    </button>
+                                </div>
+                            </>      
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="zip-search">
+                        <span>zip code</span>
+                        <SearchBar userList={itemList} onSearch={findCheapestOptions} />
+                    </div>
                 </div>
             </div>
             <div className="deals-container">
                 <h3>Your Options</h3>
-                <div className="options-container">
-                    <SearchResults cheapestOptions={cheapestOptions} areaMessage={areaMessage}/> 
-                </div>
+                <SearchResults cheapestOptions={cheapestOptions} areaMessage={areaMessage}
+                /> 
             </div>
         </div>
     )

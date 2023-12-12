@@ -28,7 +28,7 @@ function Landing() {
         </h3>
       </div>
       {!Cookies.get("dataToken") ? (
-        <div className="buttons">
+        <div className="btns">
           <Link to="/register">
             <button className="register-button">Register</button>
           </Link>
