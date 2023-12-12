@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import searchResults from "../../CSS/SearchResults.module.css";
 
-export default function SearchResults({ cheapestOptions, areaMessage }) {
+export default function SearchResults({ cheapestOptions, areaMessage, totalPrices, bestDeal}) {
+
   useEffect(() => {
     console.log('Cheapest options updated:', cheapestOptions);
+    console.log(bestDeal);
   }, [cheapestOptions]);
 
     return (
@@ -33,7 +35,15 @@ export default function SearchResults({ cheapestOptions, areaMessage }) {
               ))}
             </div>
             <div className={searchResults["total"]}>
-
+              <p>Total cost:</p>
+              <p>${totalPrices[store]}<span></span></p>
+            </div>
+            <div className={searchResults["store-link"]}>
+              {/* target = "_blank" is a html command that ensures the link opens up in a new tab/window & rel="noopener noreferrer" attribute sets the security standards for opening links in a new tab/window*/}
+              {/* noopener: When a new tab or window is opened using target="_blank", the new page gains access to the window.opener object of the original page. This could potentially be a security risk. Adding noopener prevents the new page from having access to window.opener. the noreferrer: attribute ensures that no referrer info is passed when the user navigates from the current page to the provided link */}
+              <a href={cheapestOptions[store][0].link} target="_blank" rel="noopener noreferrer">
+                View on {store}
+              </a>
             </div>
           </div>
         ))

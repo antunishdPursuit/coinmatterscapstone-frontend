@@ -1,6 +1,7 @@
 const mockData = {
     "CTown": {
       "zipcodes": ["10456", "10462", "11101", "10029"],
+      "website": "https://www.ctownsupermarkets.com/",
       "products": 
       [
         {
@@ -169,6 +170,7 @@ const mockData = {
     },
     "Target": {
       "zipcodes": ["10456", "10462", "11101", "10029"],
+      "website": "https://www.target.com",
       "products": [
         {
           "position": 1,
@@ -336,6 +338,7 @@ const mockData = {
     },
     "Walmart": {
       "zipcodes": ["10456", "10462", "11101", "10029"],
+      "website": "https://www.walmart.com",
       "products": [
         {
           "position": 22,
