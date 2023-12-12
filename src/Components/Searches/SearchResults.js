@@ -5,7 +5,7 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
 
   useEffect(() => {
     console.log('Cheapest options updated:', cheapestOptions);
-    console.log(bestDeal);
+    // console.log(bestDeal);
   }, [cheapestOptions]);
 
     return (
