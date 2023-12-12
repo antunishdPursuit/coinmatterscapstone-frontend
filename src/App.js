@@ -24,6 +24,7 @@ function App() {
       // If the server responds with a success status, the cookie exists
       console.log("Session Storage Set")
       sessionStorage.setItem("LoggenIn", "True");
+      window.location.reload()
     })
     .catch((error) => {
       // If the server responds with an error status, the cookie does not exist
@@ -39,7 +40,7 @@ function App() {
         <NavBar></NavBar>
         <main>
           <Routes>
-            <Route path="/" element={<Landing updateData={updateData}/>} />
+            <Route path="/" element={<Landing/>} />
             <Route path="/about" element={<About/>} />
             <Route 
             path="/search" 
@@ -58,7 +59,7 @@ function App() {
             ?
             <Navigate to="/"/> 
             :
-            <LogIn />} />
+            <LogIn  updateData={updateData}/>} />
             <Route path="/"/>
           </Routes>
         </main>

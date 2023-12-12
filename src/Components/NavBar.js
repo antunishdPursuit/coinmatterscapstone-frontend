@@ -32,7 +32,7 @@ function NavBar() {
       <div className="links">
         <Link to="search">Search</Link>
         <Link to="/about">About Us</Link>
-        {sessionStorage.getItem("LoggenIn") == "True" ? 
+        {sessionStorage.getItem("LoggenIn") === "True" ? 
           <Link onClick={LogOut}>Log Out</Link>
         : 
           <Link >Temp</Link>
