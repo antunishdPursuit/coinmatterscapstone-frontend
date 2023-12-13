@@ -27,7 +27,7 @@ function NavBar() {
         <Link to="/">
           <img src={navLogo} alt="My App Logo" className="nav-logo" />
         </Link>
-        <span className="nav-title">CoinMatters</span>
+        <span className="nav-title">CoinsMatter</span>
       </div>
       <div className="links">
         <Link to="search">Search</Link>

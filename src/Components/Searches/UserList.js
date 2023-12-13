@@ -121,12 +121,10 @@ export default function UserList() {
 //         };
 //     }
 
-
     useEffect(() => {
         calculateTotalPrice(cheapestOptions);
 //         bestDeal(totalPrices)
     }, [cheapestOptions]);
-
 
     useEffect(() => {
         axios
@@ -141,6 +139,43 @@ export default function UserList() {
                 console.error("catch", error);
             });
     }, [])
+
+    // const calculateTotalPrice = (cheapestOptions) => {
+    //     console.log(cheapestOptions);
+
+    //     const totalPrices = {};
+
+    //     Object.keys(cheapestOptions).forEach(store => {
+    //         const storeItems = cheapestOptions[store];
+
+    //         const storeTotalPrice = storeItems.reduce((sum, item) => sum + Number(item.price.substring(1)), 0);
+
+    //         totalPrices[store] = storeTotalPrice.toFixed(2);
+    //     });
+    //     console.log(totalPrices);
+    //     return totalPrices;
+    // }
+
+    // const bestDeal = (totalPrices) => {
+    //     if (Object.keys(totalPrices).length === 0) {
+    //         return null;
+    //     }
+
+    //     const lowestTotalPrice = Object.keys(totalPrices).resude((minTotal, currentTotal) => {
+    //         return totalPrices[currentTotal] < totalPrices[minTotal] ? currentTotal : minTotal;
+    //     });
+
+    //     return {
+    //         store: lowestTotalPrice,
+    //         totalPrice: totalPrices[lowestTotalPrice],
+    //     };
+    // }
+
+    // useEffect(() => {
+    //     calculateTotalPrice(cheapestOptions);
+    //     bestDeal(totalPrices)
+    // }, [cheapestOptions]);
+
 
     return (
         <div className="search-page-container">
@@ -217,6 +252,7 @@ export default function UserList() {
                 <h3>Your Options</h3>
                 <SearchResults cheapestOptions={cheapestOptions} areaMessage={areaMessage} totalPrices = {calculateTotalPrice(cheapestOptions)} 
 //                 bestDeal= {bestDeal(totalPrices)}
+
                 /> 
             </div>
         </div>
