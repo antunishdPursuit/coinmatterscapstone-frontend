@@ -42,11 +42,11 @@ function LogIn({ updateData }) {
 
   return (
     <div className="wrapper">
-      <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
+        <h2>Log In</h2>
+        <h3>For all your list saving needs!</h3>
         <div className="input-box">
-          <label htmlFor="email">Email: </label>
-          <br></br>
+          <label htmlFor="email"><h3>Email:</h3> </label>
           <input
           id="email" 
           type="email" 
@@ -59,23 +59,24 @@ function LogIn({ updateData }) {
         </div>
           <br></br>
         <div className="input-box">
-          <label className="form-check-label" htmlFor="password">Password: </label>
+          <label  htmlFor="password"><h3>Password:</h3> </label>
           <input 
           id="password"
           type="password" 
           value={user.password}
           onChange={handleTextChange}
           className="form-check-input" 
+          placeholder="Rememorable!"
           />
         </div>
           <br></br>
         <div className="input-box button">
           <input type="submit" />
         </div>
-      </form>
-      <div className="text">
+        <div className="text">
           <h3>Dont Have An Account? <a href="/register">Register</a></h3>
         </div>
+      </form>
     </div>
   )
 }

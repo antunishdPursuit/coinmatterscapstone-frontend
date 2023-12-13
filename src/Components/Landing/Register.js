@@ -43,52 +43,54 @@ function Register() {
 
   return (
     <div className="wrapper">
-      <h1>Register</h1>
-      <div className="text">
-          <h4>An account will allow you to save lists for future reference</h4>
-      </div>
       <form onSubmit={handleSubmit}>
+        <h2>Register</h2>
+        <h3>Coinsmatter will save your lists, saved for your future needs</h3>
         <div className="input-box">
-          <label htmlFor="username">Username: </label>
+          <label htmlFor="username"><h3>Username:</h3> </label>
           <input
           id="username" 
           type="text" 
           value={user.username}
           onChange={handleTextChange}
           className="form-control" 
-          placeholder=" username:"
+          placeholder="Like... Rex45"
           required
           />
         </div>
           <br></br>
         <div className="input-box">
-          <label htmlFor="email">Email: </label>
+          <label htmlFor="email"><h3>Email:</h3> </label>
           <input
           id="email" 
           type="email" 
           value={user.email}
           onChange={handleTextChange}
           className="form-control" 
-          placeholder=" email"
+          placeholder=" test@gmail.com"
           required
           />
         </div>
           <br></br>
         <div className="input-box">
-          <label className="form-check-label" htmlFor="password">Password: </label>
+          <label htmlFor="password"><h3>Password:</h3> </label>
           <input 
           id="password"
           type="password" 
           value={user.password}
           checked={user.password}
           onChange={handleTextChange}
-          className="form-check-input" 
+          className="form-control" 
+          placeholder="Rememorable!"
           />
         </div>
           <br></br>
         <div className="input-box button">
-          <input type="submit" />
+          <input 
+          type="submit" 
+          />
         </div>
+        <br></br>
         <div className="text">
           <h3>Already have an account? <a href="/login">Login now</a></h3>
         </div>
