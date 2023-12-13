@@ -18,14 +18,10 @@ function Landing() {
       {sessionStorage.getItem("LoggenIn") === "True" ? (
        <Link to="">User</Link>
       ) : (
-        <div className="buttons">
-        <Link to="/register">
-          <button className="register-button">Register</button>
-        </Link>
-        <Link to="/login">
-          <button className="login-button login">Login</button>
-        </Link>
-      </div>
+        <div className="Landing-buttons">
+          <Link className="register-button" to="/register">Register</Link>
+          <Link className="login-button login" to="/login">Login</Link>
+        </div>
       )}
     </div>
   );

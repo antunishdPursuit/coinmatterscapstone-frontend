@@ -105,6 +105,15 @@
   line-height: 1.5;
   text-align: justify;
 }
+
+.Landing-buttons{
+  display: flex;
+  justify-content: right;
+  margin-top: 20px;
+  width: 100%;
+}
+
+
 /* Responsive styles for medium-sized screens (e.g., tablets) */
 @media (max-width: 768px) {
   .big-pink,
@@ -125,7 +134,7 @@
   .info-box {
     width: 100%;
   }
-  .buttons {
+  .Landing-buttons {
     justify-content: center; /* Center-align buttons on smaller screens */
     flex-direction: column; /* Stack buttons vertically */
     margin-top: 10px; /* Adjust spacing between buttons */
