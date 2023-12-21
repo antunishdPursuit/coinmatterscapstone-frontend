@@ -24,10 +24,11 @@ export default function UserList() {
     const [cheapestOptions, setCheapestOptions] = useState({});
     const [oneUserData, setOneUserData] = useState('');
 
-    //this is a hover state for user-friendly interface 
+    //this is a hover state for list icons such as the shopping cart and minus button  for a user-friendly interface 
     const [isHovered, setIsHovered] = useState(false);
     const [isMinusHovered, setIsMinusHovered] = useState(Array(itemList.length).fill(false));
 
+    //this fxns is responsible for creating the user's grocery list (itemList). Users input grocery items into the input form and on submit an item is added to the itemlist array
     // Get user data
     const { loggedIn } = AuthData();
     const { user } = AuthData();
@@ -46,11 +47,13 @@ export default function UserList() {
         };
     };
 
+    //this fxn removes an item from the list if the user no longer wants that on their grocery list
     const removeListItem = (removedItem) => {
         const updatedList = itemList.filter((item)=> item.toLowerCase() !== removedItem.toLowerCase());
         setItemList(updatedList);
     }
 
+    //this fxn takes in the itemList (user's grocery list) and the entered zipcode from the SearchBar component to find validStores. validStores are stores within that zipcode. Stores in the area are then evaluated to check for the cheapest store items that match the items on the user's itemList 
     const findCheapestOptions = (itemList, zipcode) => {
         const updatedCheapestOptions = { ...cheapestOptions };
 
@@ -59,7 +62,7 @@ export default function UserList() {
         if (validStores.length === 0) {
             setCheapestOptions({});
             setAreaMessage("Sorry, at the moment we do not have store details for that zip code yet. We are working on expanding our location coverage. Please check back soon.")
-            return; // No valid stores found
+            return; //no valid stores found
         }
 
         //now that we have the stores in a specific location we will iterate over them; checking for the cheapest item(s) that closely match user's list
@@ -97,6 +100,7 @@ export default function UserList() {
         setCheapestOptions(updatedCheapestOptions);
     };
 
+    //this fxn takes in the cheapestOptions which is an object of the matched items, store name, and price for each item. this fxn is responsible for calculating and returning the total price for all items within one store. For example, if you have 5 items from Target. the price of all those items are calculated and printed in a human readable form. This fxn returns the store name and the total price of all groceries from that store. Ex: {store: Walmart, total: $18}
     const calculateTotalPrice = (cheapestOptions) => {
         console.log(cheapestOptions);
 
@@ -118,8 +122,11 @@ export default function UserList() {
         console.log(totalPrices);
         return totalPrices;
     }
+
+    //Prices is a global variable. I created it inside the main scope. I wanted to use the return values from the calculateTotalPrice fxn, thus, I stored it in the prices variable so that I can access it globally - quick tip - another way to do this is to make a use state that will update the totalPrices object. 
     const prices = calculateTotalPrice(cheapestOptions);
 
+    //bestDeal takes in the prices variable which is an object with store names and their total for all items, compares them, and returns the store with the least lowest total cost. Ex: {store: Walmart, total: $18}.  
     const bestDeal = (prices) => {
         if (Object.keys(prices).length === 0) {
             return null;
@@ -143,6 +150,7 @@ export default function UserList() {
         };
     }
 
+//useEffect is used to update the states and information inside the objects cheapestOptions and prices.
     useEffect(() => {
         calculateTotalPrice(cheapestOptions);
         bestDeal(prices);
@@ -265,7 +273,6 @@ export default function UserList() {
                 <h3>Your Options</h3>
                 <SearchResults cheapestOptions={cheapestOptions} areaMessage={areaMessage} totalPrices = {calculateTotalPrice(cheapestOptions)} 
                 bestDeal = {bestDeal(prices)}
-
                 /> 
             </div>
         </div>

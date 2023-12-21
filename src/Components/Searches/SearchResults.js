@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import searchResults from "../../CSS/SearchResults.module.css";
 
+//this fxn returns the results of the user's search
 export default function SearchResults({ cheapestOptions, areaMessage, totalPrices, bestDeal}) {
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
               ))}
             </div>
             <div className={searchResults["total"]}>
-              <p>Total cost:</p>
+              <p style={{"font-size": "12px"}}>Total cost</p>
               <p>
                 ${totalPrices[store]}{bestDeal.store === store ? <span className={searchResults["best-deal-label"]}>best deal</span> : null}
                 </p>

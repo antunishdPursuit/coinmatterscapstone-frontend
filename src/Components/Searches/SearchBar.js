@@ -10,6 +10,9 @@ import { useState } from "react";
 
 // const API = process.env.REACT_APP_API_URL;
 
+/*
+this function is the SearchBar fxn that is responsible for taking the userList, which is the itemList passed down from the UserList component, and onSearch, which is the findCheapestOptions fxn, to store the zipcode and send the information back to the  findCheapestOptions fxn. 
+*/
 
 export default function SearchBar({ userList, onSearch }) {
     const [zipcode, setZipcode] = useState("");
