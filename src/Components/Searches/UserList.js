@@ -22,7 +22,7 @@ export default function UserList() {
     const [errorMessage, setErrorMessage] = useState("");
     const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
-    const [oneUserData, setOneUserData] = useState('')
+    const [oneUserData, setOneUserData] = useState('');
 
     //this is a hover state for user-friendly interface 
     const [isHovered, setIsHovered] = useState(false);
@@ -89,12 +89,65 @@ export default function UserList() {
                         item: `sorry, our list for ${store} doesn't have ${item}.`,
                         image: itemUnavailable,
                         className: 'unavailable-item',
+                        price: 0,
                     });
                 }
             });
         });
         setCheapestOptions(updatedCheapestOptions);
     };
+
+    const calculateTotalPrice = (cheapestOptions) => {
+        console.log(cheapestOptions);
+
+        const totalPrices = {};
+
+        Object.keys(cheapestOptions).forEach(store => {
+            const storeItems = cheapestOptions[store];
+
+            const storeTotalPrice = storeItems.reduce((sum, item) => {
+                if(item.className ==='unavailable-item'){
+                    return sum;
+                }
+
+                return sum + Number(item.price.substring(1))
+            }, 0);
+
+            totalPrices[store] = storeTotalPrice.toFixed(2);
+        });
+        console.log(totalPrices);
+        return totalPrices;
+    }
+    const prices = calculateTotalPrice(cheapestOptions);
+
+    const bestDeal = (prices) => {
+        if (Object.keys(prices).length === 0) {
+            return null;
+        }
+
+        let cheapestStore;
+        let lowestTotal = Infinity;
+
+        Object.keys(prices).forEach((store) => {
+            const totalPrice = parseFloat(prices[store]);
+
+            if (totalPrice < lowestTotal) {
+                lowestTotal = totalPrice; 
+                cheapestStore = store;
+            }
+        });
+
+        return {
+            store: cheapestStore,
+            totalPrice: lowestTotal,
+        };
+    }
+
+    useEffect(() => {
+        calculateTotalPrice(cheapestOptions);
+        bestDeal(prices);
+        console.log(bestDeal(prices));
+    }, [cheapestOptions]);
 
     const calculateTotalPrice = (cheapestOptions) => {
         console.log(cheapestOptions);
@@ -112,61 +165,25 @@ export default function UserList() {
         return totalPrices;
     }
 
-//     const bestDeal = (totalPrices) => {
-//         if (Object.keys(totalPrices).length === 0) {
-//             return null;
-//         }
+    const bestDeal = (totalPrices) => {
+        if (Object.keys(totalPrices).length === 0) {
+            return null;
+        }
 
-//         const lowestTotalPrice = Object.keys(totalPrices).resude((minTotal, currentTotal) => {
-//             return totalPrices[currentTotal] < totalPrices[minTotal] ? currentTotal : minTotal;
-//         });
+        const lowestTotalPrice = Object.keys(totalPrices).resude((minTotal, currentTotal) => {
+            return totalPrices[currentTotal] < totalPrices[minTotal] ? currentTotal : minTotal;
+        });
 
-//         return {
-//             store: lowestTotalPrice,
-//             totalPrice: totalPrices[lowestTotalPrice],
-//         };
-//     }
+        return {
+            store: lowestTotalPrice,
+            totalPrice: totalPrices[lowestTotalPrice],
+        };
+    }
 
     useEffect(() => {
         calculateTotalPrice(cheapestOptions);
-//         bestDeal(totalPrices)
+        bestDeal(totalPrices)
     }, [cheapestOptions]);
-
-    // const calculateTotalPrice = (cheapestOptions) => {
-    //     console.log(cheapestOptions);
-
-    //     const totalPrices = {};
-
-    //     Object.keys(cheapestOptions).forEach(store => {
-    //         const storeItems = cheapestOptions[store];
-
-    //         const storeTotalPrice = storeItems.reduce((sum, item) => sum + Number(item.price.substring(1)), 0);
-
-    //         totalPrices[store] = storeTotalPrice.toFixed(2);
-    //     });
-    //     console.log(totalPrices);
-    //     return totalPrices;
-    // }
-
-    // const bestDeal = (totalPrices) => {
-    //     if (Object.keys(totalPrices).length === 0) {
-    //         return null;
-    //     }
-
-    //     const lowestTotalPrice = Object.keys(totalPrices).resude((minTotal, currentTotal) => {
-    //         return totalPrices[currentTotal] < totalPrices[minTotal] ? currentTotal : minTotal;
-    //     });
-
-    //     return {
-    //         store: lowestTotalPrice,
-    //         totalPrice: totalPrices[lowestTotalPrice],
-    //     };
-    // }
-
-    // useEffect(() => {
-    //     calculateTotalPrice(cheapestOptions);
-    //     bestDeal(totalPrices)
-    // }, [cheapestOptions]);
 
 
     return (
@@ -247,7 +264,7 @@ export default function UserList() {
             <div className="deals-container">
                 <h3>Your Options</h3>
                 <SearchResults cheapestOptions={cheapestOptions} areaMessage={areaMessage} totalPrices = {calculateTotalPrice(cheapestOptions)} 
-//                 bestDeal= {bestDeal(totalPrices)}
+                bestDeal = {bestDeal(prices)}
 
                 /> 
             </div>
