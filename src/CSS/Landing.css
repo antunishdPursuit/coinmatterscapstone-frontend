@@ -30,26 +30,6 @@
   text-decoration: underline;
 }
 
-.landing-wrapper {
-  top: 5;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: url("https://assets-global.website-files.com/603cffd4503d70116b6b1da5/63e695f0dbbe99042f0f048b_groceries.png");
-  background-size: 70% auto;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 180% center;
-  padding: 0;
-}
-
-.big-pink {
-  font-size: 170px;
-  /* font-size: 1200%; */
-  color: rgb(249, 66, 176);
-  padding-left: 5%;
-  font-family: "Montserrat", sans-serif;
-}
 
 .centered {
   text-align: left;
@@ -57,12 +37,7 @@
 .no-margin {
   margin: 0;
 }
-.info-box {
-  padding: 5%;
-  text-align: left;
-  overflow-wrap: break-word;
-  width: 600px;
-}
+
 .outlined-text {
   font-size: 170px;
   color: transparent;
@@ -70,7 +45,7 @@
   padding-left: 5%;
   margin: 0;
   -webkit-text-stroke: 2px rgb(249, 66, 176);
-  font-family: "Montserrat", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 .btns {
   display: flex;
@@ -78,40 +53,23 @@
   margin-top: 20px;
   padding-right: 10%;
 }
-.register-button,
-.login-button {
-  padding: 10px 50px;
-  margin: 0 10px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  font-weight: bold;
-}
 
-.register-button:hover,
-.login-button:hover {
-  background-color: #ff69b4;
-}
-.login {
-  background-color: white;
-  color: black;
-}
+
+
+
+
+
 
 #MainText {
   font-family: "Courgette", cursive;
   font-family: "DM Serif Display", serif;
   line-height: 1.5;
   text-align: justify;
+  color:  #ff69b4;
+
 }
 
-.Landing-buttons{
-  display: flex;
-  justify-content: right;
-  margin-top: 20px;
-  width: 100%;
-}
+
 
 
 /* Responsive styles for medium-sized screens (e.g., tablets) */

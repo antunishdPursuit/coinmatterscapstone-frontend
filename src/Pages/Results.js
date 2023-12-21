@@ -1,4 +1,4 @@
-import SearchResults from "../Components/Searches/SearchResults";
+import SearchResults from "../components/Searches/SearchResults";
 
 export default function Results() {
     return (

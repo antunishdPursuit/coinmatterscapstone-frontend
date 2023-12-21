@@ -10,14 +10,14 @@ import {
 import logo from "../logo.png";
 
 const teamMembers = [
-  {
-    name: "Lakisha Johnson",
-    bio: `"LA FIN"`,
-    image: "https://ca.slack-edge.com/TCVA3PF24-U023QNLU8AF-f97d7c72a3e9-512",
-    linkedin: "https://www.linkedin.com/in/lakisha-johnson-0b0587219/",
-    twitter: "Twitter URL 2",
-    facebook: "Facebook URL 2",
-  },
+  // {
+  //   name: "Lakisha Johnson",
+  //   bio: `"LA FIN"`,
+  //   image: "https://ca.slack-edge.com/TCVA3PF24-U023QNLU8AF-f97d7c72a3e9-512",
+  //   linkedin: "https://www.linkedin.com/in/lakisha-johnson-0b0587219/",
+  //   twitter: "Twitter URL 2",
+  //   facebook: "Facebook URL 2",
+  // },
   {
     name: "Irwin Jorge",
     bio: `"Short sentence.... "`,
