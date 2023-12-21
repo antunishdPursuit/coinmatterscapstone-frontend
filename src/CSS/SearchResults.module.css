@@ -48,7 +48,8 @@
     /* border: 5px solid rgb(195, 255, 0); */
     overflow-y: auto;
     border-top: 1px solid black;
-    padding-bottom: 40px;
+    padding-bottom: 150px;
+    margin-bottom: 50px;
 }
 
 .item-container {
@@ -115,4 +116,18 @@
 .empty-results img {
     width: 300px;
     opacity: 0.7;
+}
+
+.total {
+    border: 2px solid rgb(68, 0, 255);
+    margin-left: 0px;
+}
+
+
+.best-deal-label {
+    margin-left: 10px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(249, 218, 43);
+    border-radius: 8px;
+    padding: 0px 10px;
 }

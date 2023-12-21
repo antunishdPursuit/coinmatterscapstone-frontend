@@ -5,7 +5,7 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
 
   useEffect(() => {
     console.log('Cheapest options updated:', cheapestOptions);
-    // console.log(bestDeal);
+    console.log(bestDeal);
   }, [cheapestOptions]);
 
     return (
@@ -36,7 +36,9 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
             </div>
             <div className={searchResults["total"]}>
               <p>Total cost:</p>
-              <p>${totalPrices[store]}<span></span></p>
+              <p>
+                ${totalPrices[store]}{bestDeal.store === store ? <span className={searchResults["best-deal-label"]}>best deal</span> : null}
+                </p>
             </div>
             <div className={searchResults["store-link"]}>
               {/* target = "_blank" is a html command that ensures the link opens up in a new tab/window & rel="noopener noreferrer" attribute sets the security standards for opening links in a new tab/window*/}
