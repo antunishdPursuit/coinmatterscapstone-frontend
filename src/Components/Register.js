@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../CSS/Register.css"
+import "../CSS/Register.css"
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -24,7 +24,7 @@ function Register() {
           .post(`${API}/register`, newUser)
           .then(
           (res) => {
-          navigate(`/about`);
+          navigate(`/login`);
           })
           .catch((c) => {
             console.error("catch", c)

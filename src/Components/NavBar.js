@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import navLogo from "../navLogo.png";
 import "../CSS/NavBar.css";
 import axios from "axios";
+import { AuthData } from "../context/GetUser";
 const API = process.env.REACT_APP_API_URL;
 
 function NavBar() {
   const navigate = useNavigate(); 
+  const { loggedIn } = AuthData();
   
   function LogOut(){
     axios
@@ -29,13 +31,15 @@ function NavBar() {
         </Link>
         <span className="nav-title">CoinsMatter</span>
       </div>
-      <div className="links">
-        <Link to="search">Search</Link>
-        <Link to="/about">About Us</Link>
-        {sessionStorage.getItem("LoggenIn") === "True" ? 
-          <Link onClick={LogOut}>Log Out</Link>
+      <div className="navbar-links">
+        <Link className="links-tab" to="/">Home</Link>
+        <Link className="links-tab" to="/about">About Us</Link>
+        <Link className="links-tab" to="/search">Search</Link>
+        {loggedIn ? 
+          <Link className="links-tab" onClick={LogOut}>Log Out</Link>
+          
         : 
-          <Link >Temp</Link>
+          <Link className="links-tab" ></Link>
         }
       </div>
     </nav>

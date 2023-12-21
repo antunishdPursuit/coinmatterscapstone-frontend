@@ -136,3 +136,26 @@
     width: 50%;
     padding: 0px 30px;
 }
+
+
+.UserMenuLink {
+    text-decoration: none;
+    margin-right: 20px;
+    color: #FCD712;
+}
+
+.UserMenuLink:link {
+color: #f942b0;
+}
+
+.UserMenuLink:visited {
+color: #f942b0;
+}
+
+.UserMenuLink:hover {
+color: #FCD712;
+}
+
+.UserMenuLink:active {
+color: #FCD712;
+}

@@ -1,0 +1,60 @@
+.hero-image {
+    top: 5;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("https://assets-global.website-files.com/603cffd4503d70116b6b1da5/63e695f0dbbe99042f0f048b_groceries.png");
+    background-size: 70% auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 180% center;
+    padding: 60px 0;
+    }
+
+
+.landing-headline {
+    font-size: 48px;
+    color: rgb(249, 66, 176);
+    padding-left: 5%;
+    font-family: "Montserrat", sans-serif;
+    width: 600px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.info-box {
+    padding: 5%;
+    text-align: left;
+    overflow-wrap: break-word;
+    width: 600px;
+}
+
+.landing-cta-button {
+    padding: 12px 50px;
+    margin: 0 10px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.landing-cta-button:hover {
+    background-color: #94295e;
+}
+
+.landing-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .landing-features {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin: 60px 0;
+  }

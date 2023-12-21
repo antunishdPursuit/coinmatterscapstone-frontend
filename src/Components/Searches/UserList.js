@@ -1,4 +1,5 @@
 import  { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import axios from "axios";
 import SearchResults from "./SearchResults";
@@ -8,6 +9,7 @@ import cartIconHover from "../../Images/cart-solid-icon.png";
 import circleIcon from "../../Images/circle-minus-light-icon.png";
 import circleIconHover from "../../Images/circle-minus-solid-icon.png";
 import itemUnavailable from "../../Images/unavailable-item.png";
+import { AuthData } from "../../context/GetUser"
 
 //mock data 
 import storeData from "./mockData";
@@ -25,6 +27,10 @@ export default function UserList() {
     //this is a hover state for user-friendly interface 
     const [isHovered, setIsHovered] = useState(false);
     const [isMinusHovered, setIsMinusHovered] = useState(Array(itemList.length).fill(false));
+
+    // Get user data
+    const { loggedIn } = AuthData();
+    const { user } = AuthData();
 
     const addItem = () => {
         if (inputValue.trim() !== '') {
@@ -126,20 +132,6 @@ export default function UserList() {
 //         bestDeal(totalPrices)
     }, [cheapestOptions]);
 
-    useEffect(() => {
-        axios
-            .get(`${API}/user`, {
-                withCredentials: true,
-            })
-            .then((res) => {
-                setOneUserData(res.data.authorizedData)
-                console.log(res.data)
-            })
-            .catch((error) => {
-                console.error("catch", error);
-            });
-    }, [])
-
     // const calculateTotalPrice = (cheapestOptions) => {
     //     console.log(cheapestOptions);
 
@@ -181,10 +173,14 @@ export default function UserList() {
         <div className="search-page-container">
             <div className="user-list-container">
                 <div className="username">
-                    <h3>{sessionStorage.getItem("LoggenIn") === "True" ? `${oneUserData.username} List` : "Your List"}</h3>
-                
-                    {console.log(oneUserData)}
-                    {console.log(sessionStorage.getItem("LoggenIn") === "True")}
+                    {loggedIn
+                    ? 
+                    <h3>
+                        <Link className="UserMenuLink"to={`/${user.username}`}> {user.username}'s List </Link> 
+                    </h3>
+                    
+                    : 
+                    <h3>Your List</h3>}
                 </div>
                 <div className="item-search">
                     <input
