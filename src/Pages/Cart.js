@@ -1,5 +1,5 @@
-import SearchBar from "../Components/Searches/oldSearchBar";
-import CompareCarts from "../Components/CompareCarts";
+import SearchBar from "../components/Searches/oldSearchBar";
+import CompareCarts from "../components/CompareCarts";
 import "../CSS/Search.css"
 
 export default function Cart() {

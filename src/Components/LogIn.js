@@ -1,43 +1,31 @@
 import React from 'react'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "../../CSS/Register.css"
+import "../CSS/Register.css"
+import { AuthData } from "../context/GetUser"
 
 const API = process.env.REACT_APP_API_URL;
 
-function LogIn({ updateData }) {
+function LogIn() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  const instance = axios.create({
-    withCredentials: true,
- })
- 
-  const logInUser = (existingUser) => {
-    instance
-      .post(`${API}/login`, existingUser)
-      .then(
-      (res) => {
-        updateData()
-        navigate(`/`);
-      })
-      .catch((c) => {
-        console.error("catch", c)
-      });
-  };
-
-    // If email was previouls used, it will not work
-  const handleTextChange = (event) => {
-      setUser({ ...user, [event.target.id]: event.target.value });
-  };
+  const { logInUser } = AuthData();
 
   const handleSubmit = (event) => {
       event.preventDefault();
-      logInUser(user)
+      if (logInUser) {
+        logInUser(user)
+      }
+      navigate('/')
+  };
+
+  // If email was previouls used, it will not work
+  const handleTextChange = (event) => {
+    setUser({ ...user, [event.target.id]: event.target.value });
   };
 
   return (

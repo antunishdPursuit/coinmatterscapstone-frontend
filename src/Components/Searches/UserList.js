@@ -1,4 +1,5 @@
 import  { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import axios from "axios";
 import SearchResults from "./SearchResults";
@@ -8,6 +9,7 @@ import cartIconHover from "../../Images/cart-solid-icon.png";
 import circleIcon from "../../Images/circle-minus-light-icon.png";
 import circleIconHover from "../../Images/circle-minus-solid-icon.png";
 import itemUnavailable from "../../Images/unavailable-item.png";
+import { AuthData } from "../../context/GetUser"
 
 //mock data 
 import storeData from "./mockData";
@@ -26,8 +28,10 @@ export default function UserList() {
     const [isHovered, setIsHovered] = useState(false);
     const [isMinusHovered, setIsMinusHovered] = useState(Array(itemList.length).fill(false));
 
-
     //this fxns is responsible for creating the user's grocery list (itemList). Users input grocery items into the input form and on submit an item is added to the itemlist array
+    // Get user data
+    const { loggedIn } = AuthData();
+    const { user } = AuthData();
 
     const addItem = () => {
         if (inputValue.trim() !== '') {
@@ -153,27 +157,55 @@ export default function UserList() {
         console.log(bestDeal(prices));
     }, [cheapestOptions]);
 
+    const calculateTotalPrice = (cheapestOptions) => {
+        console.log(cheapestOptions);
+
+        const totalPrices = {};
+
+        Object.keys(cheapestOptions).forEach(store => {
+            const storeItems = cheapestOptions[store];
+
+            const storeTotalPrice = storeItems.reduce((sum, item) => sum + Number(item.price.substring(1)), 0);
+
+            totalPrices[store] = storeTotalPrice.toFixed(2);
+        });
+        console.log(totalPrices);
+        return totalPrices;
+    }
+
+    const bestDeal = (totalPrices) => {
+        if (Object.keys(totalPrices).length === 0) {
+            return null;
+        }
+
+        const lowestTotalPrice = Object.keys(totalPrices).resude((minTotal, currentTotal) => {
+            return totalPrices[currentTotal] < totalPrices[minTotal] ? currentTotal : minTotal;
+        });
+
+        return {
+            store: lowestTotalPrice,
+            totalPrice: totalPrices[lowestTotalPrice],
+        };
+    }
+
     useEffect(() => {
-        axios
-            .get(`${API}/user`, {
-                withCredentials: true,
-            })
-            .then((res) => {
-                setOneUserData(res.data.authorizedData)
-                console.log(res.data)
-            })
-            .catch((error) => {
-                console.error("catch", error);
-            });
-    }, [])
+        calculateTotalPrice(cheapestOptions);
+        bestDeal(totalPrices)
+    }, [cheapestOptions]);
+
 
     return (
         <div className="search-page-container">
             <div className="user-list-container">
                 <div className="username">
-                    <h3>{sessionStorage.getItem("LoggenIn") === "True" ? `${oneUserData.username} List` : "Your List"}</h3>
-                    {console.log(oneUserData)}
-                    {console.log(sessionStorage.getItem("LoggenIn") === "True")}
+                    {loggedIn
+                    ? 
+                    <h3>
+                        <Link className="UserMenuLink"to={`/${user.username}`}> {user.username}'s List </Link> 
+                    </h3>
+                    
+                    : 
+                    <h3>Your List</h3>}
                 </div>
                 <div className="item-search">
                     <input
