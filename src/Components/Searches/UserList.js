@@ -157,9 +157,6 @@ export default function UserList() {
         console.log(bestDeal(prices));
     }, [cheapestOptions]);
 
-    
-
-
     return (
         <div className="search-page-container">
             <div className="user-list-container">

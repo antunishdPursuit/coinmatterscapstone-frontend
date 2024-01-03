@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from "react-router-dom";
 
 import FeatureCard from '../components/featureCard/FeatureCard';
-
 import './Home.css';
 
 function Home() {
@@ -16,19 +15,19 @@ function Home() {
       </div>
       <div className="landing-features">
         <FeatureCard 
-          imgUrl='https://placehold.co/300x240'
+          imgUrl='./featurecard1.jpg'
           title='Feature 1'
           text='Some text from props.'
           buttonText='Click from Prop'
         />
         <FeatureCard
-          imgUrl='https://placehold.co/300x240'
+          imgUrl='./featurecard2.jpg'
           title='Feature 1'
           text='Some text from props.'
           buttonText='Click from Prop'
         />
         <FeatureCard 
-          imgUrl='https://placehold.co/300x240'
+          imgUrl='./featurecard3.jpg'
           title='Feature 1'
           text='Some text from props.'
           buttonText='Click from Prop'

@@ -54,23 +54,13 @@
   padding-right: 10%;
 }
 
-
-
-
-
-
-
 #MainText {
   font-family: "Courgette", cursive;
   font-family: "DM Serif Display", serif;
   line-height: 1.5;
   text-align: justify;
   color:  #ff69b4;
-
 }
-
-
-
 
 /* Responsive styles for medium-sized screens (e.g., tablets) */
 @media (max-width: 768px) {

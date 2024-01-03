@@ -1,0 +1,28 @@
+.footer {
+    background-color: #ff69b4;
+    color: white;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.footer__col {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    text-align: center;
+}
+
+.footer__col a {
+    width: 33%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    padding-top: 10px;
+    font-size: large;
+}
+
+.footer__col a:hover {
+    color: yellow;
+}

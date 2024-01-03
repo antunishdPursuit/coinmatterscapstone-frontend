@@ -1,0 +1,41 @@
+.userListItem_box{
+    border-style: solid;
+    border-color: pink;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+.userListItem_box_features{
+    display: flex;
+    flex-direction: row;
+}
+
+.userListItem_box_flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.userListItem_box_name{
+    margin-left: 5px;
+}
+
+.userListItem_box_features_img{
+    margin-bottom: 5px;
+    margin-left: 5px
+}
+
+.userListItem_box_features_items{
+    margin-left: 5px;
+}
+
+.userListItem_box_features p {
+    font-size: small;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#userListItem_box_features_items_price{
+    font-size: 20px;
+}
+

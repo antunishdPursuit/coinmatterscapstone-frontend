@@ -11,7 +11,7 @@ const FeatureCard = ({
     return (
         <div className="feature-card">
             <div className="feature-card__img">
-                <img src={imgUrl} />
+                <img src={require(`${imgUrl}`)} />
             </div>
             <div className="feature-card__info">
                 <div className="feature-card__title">
@@ -26,7 +26,6 @@ const FeatureCard = ({
             </div>
       </div>
     )
-
 }
 
 export default FeatureCard;

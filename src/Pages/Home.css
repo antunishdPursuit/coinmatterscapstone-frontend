@@ -3,14 +3,13 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url("https://assets-global.website-files.com/603cffd4503d70116b6b1da5/63e695f0dbbe99042f0f048b_groceries.png");
-    background-size: 70% auto;
+    background-image: url("../Images/header-background.jpg");
+    background-size: 100% auto;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: 180% center;
+    background-attachment: scroll;
+    background-position: 100% center;
     padding: 60px 0;
     }
-
 
 .landing-headline {
     font-size: 48px;

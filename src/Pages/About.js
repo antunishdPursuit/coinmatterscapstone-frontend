@@ -1,5 +1,7 @@
 
 import React from "react";
+import axios from "axios";
+
 import "../CSS/About.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,7 +9,8 @@ import {
   faLinkedin,
   faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
-import logo from "../logo.png";
+import logo from "../Images/logo.png";
+const API = process.env.REACT_APP_API_URL;
 
 const teamMembers = [
   // {
@@ -45,6 +48,24 @@ const teamMembers = [
 ];
 
 function About() {
+
+  const instance = axios.create({
+    withCredentials: true,
+  })
+
+
+  const testList = () => {
+      instance
+      .get(`${API}/users/2/lists`)
+      .then((res) => {
+        console.log(`${API}/users`)
+        console.log(res.data)
+        console.log("herer")
+      })
+      .catch((error) => {
+          console.error("catch", error);
+      });
+  }
   return (
     <div>
       <header className="about-banner">
@@ -52,6 +73,7 @@ function About() {
           <img src={logo} alt="CoinMatters App" />
         </a>
         <h1>Team</h1>
+        <button onClick={testList}>clcik</button>
       </header>
       <section className="team">
         {teamMembers.map((member, index) => (

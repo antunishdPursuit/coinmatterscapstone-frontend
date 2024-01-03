@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import {AuthWrapper} from "./context/GetUser";
 
 // Layout
-import Footer from './layout/footer/Footer';
+import Footer from './layout/Footer';
 
 function App() {
 

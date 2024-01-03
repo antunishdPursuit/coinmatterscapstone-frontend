@@ -1,0 +1,46 @@
+.usermenuBox {
+    display: flex;
+    flex-direction: row;
+}
+
+.usermenuBox1 {
+    display: flex;
+    flex-direction: column;
+    border:pink;
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    height: 300px;
+    width: 180px;
+}
+
+.username_email{
+    font-size: small;
+}
+
+.username_email_button{
+    margin-top: 10px;
+}
+
+.startSaving{
+    text-decoration: none;
+    border-style: solid;
+    border-color: pink;
+    border-radius: 30px;
+    background-color: pink;
+    padding: 1px;
+}
+
+.startSaving:hover{
+    color: yellow;
+}
+
+.usermenuBox2_No_Lists{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    white-space: nowrap;
+}

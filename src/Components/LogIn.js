@@ -12,15 +12,14 @@ function LogIn() {
     email: "",
     password: "",
   });
-
   const { logInUser } = AuthData();
 
   const handleSubmit = (event) => {
       event.preventDefault();
       if (logInUser) {
         logInUser(user)
+        navigate('/')
       }
-      navigate('/')
   };
 
   // If email was previouls used, it will not work
