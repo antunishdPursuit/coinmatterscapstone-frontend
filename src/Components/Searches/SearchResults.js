@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import searchResults from "../../CSS/SearchResults.module.css";
+import mockData from "./mockData";
 
 //this fxn returns the results of the user's search
 export default function SearchResults({ cheapestOptions, areaMessage, totalPrices, bestDeal}) {
@@ -15,7 +16,9 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
             {Object.keys(cheapestOptions).length > 0 ? (
         Object.keys(cheapestOptions).map((store, index) => (
           <div key={index} className={searchResults["store-container"]}>
-            <div className={searchResults["store-logo"]}>{store}</div>
+            <div className={searchResults["store-logo"]}>
+              <img src={mockData[store].logo} alt={`${store} logo`} />
+            </div>
             <div className={searchResults["store-results"]}>
               {cheapestOptions[store].map((option, optionIndex) => (
                 <div key={optionIndex} className={searchResults["item-container"]}>

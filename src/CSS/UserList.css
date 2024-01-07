@@ -3,13 +3,13 @@
     padding-top: 60px;
     display: flex;
     justify-content: left;
-    border: 5px solid brown;
+    /* border: 5px solid brown; */
     height: 70%;
 
 }
 
 .user-list-container {
-    border: 3px solid rgb(255, 9, 206);
+    /* border: 3px solid rgb(255, 9, 206); */
     margin-right: 100px;
     padding-left: 30px;
     padding-right: 30px;
@@ -26,6 +26,7 @@
     border: 1px solid rgba(14, 22, 16, 0.647);
     border-radius: 10px;
     margin: 20px 0px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .item-search .list-icon img {
     width: 25px;
@@ -50,6 +51,7 @@
     border-bottom: 1px solid rgb(255, 9, 206);
     height: 500px;
     overflow: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .user-list {
@@ -132,7 +134,7 @@
 
 
 .deals-container {
-    border: 3px solid rgb(0, 234, 255);
+    /* border: 3px solid rgb(0, 234, 255); */
     width: 50%;
     padding: 0px 30px;
 }
