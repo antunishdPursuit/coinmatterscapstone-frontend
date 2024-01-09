@@ -1,4 +1,4 @@
-
+import { useNavigate } from 'react-router-dom';
 import './FeatureCard.css';
 
 const FeatureCard = ({
@@ -8,6 +8,10 @@ const FeatureCard = ({
     buttonText
 }) => { 
 
+    const navigate = useNavigate()
+    function toGoToLogin() {
+        navigate("/register")
+    }
     return (
         <div className="feature-card">
             <div className="feature-card__img">
@@ -20,7 +24,7 @@ const FeatureCard = ({
                 <p>
                     {text}
                 </p>
-                <button>
+                <button onClick={toGoToLogin}>
                     {buttonText}
                 </button>
             </div>

@@ -65,7 +65,7 @@ export const AuthWrapper = () => {
   const getUserList = (userId) => {
     console.log(userId)
     instance
-      .get(`${API}/users/${userId}/lists`)
+      .get(`${API}/users/2/lists`)
       .then((res) => {
         setUserList(res.data)
       })

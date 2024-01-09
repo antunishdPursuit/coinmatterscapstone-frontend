@@ -1,7 +1,7 @@
 .footer {
     background-color: #ff69b4;
     color: white;
-    padding: 40px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     margin-top: 40px;
@@ -12,6 +12,8 @@
     flex-direction: column;
     width: 33%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer__col a {
@@ -25,4 +27,13 @@
 
 .footer__col a:hover {
     color: yellow;
+}
+
+.github{
+    text-align: center;
+}
+
+.footer__col_title{
+    margin-top: 0px;
+    font-size: 20px;
 }

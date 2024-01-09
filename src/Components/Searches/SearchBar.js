@@ -26,7 +26,7 @@ export default function SearchBar({ userList, onSearch }) {
    
 
     const loginPage = () => {
-      navigate("/login")
+      navigate("/")
     }
     return (
         <div className="search-bar-container">
