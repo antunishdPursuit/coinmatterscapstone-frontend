@@ -33,7 +33,7 @@ function NavBar() {
       </div>
       <div className="navbar-links">
         <Link className="links-tab" to="/">Home</Link>
-        <Link className="links-tab" to="/about">About Us</Link>
+        <Link className="links-tab" to="/about">About</Link>
         <Link className="links-tab" to="/search">Search</Link>
         {loggedIn ? 
           <>
