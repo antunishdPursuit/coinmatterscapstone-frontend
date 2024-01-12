@@ -1,10 +1,7 @@
-// import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import "../../CSS/Search.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faSearch } from "@fortawesome/free-solid-svg-icons";
-// import UserList from "./UserList";
+import "../../CSS/Search.css";
+
 
 
 
@@ -25,9 +22,11 @@ export default function SearchBar({ userList, onSearch }) {
     }
    
 
-    const loginPage = () => {
-      navigate("/")
+
+    const newList = () => {
+      navigate("/list/new")
     }
+    
     return (
         <div className="search-bar-container">
           <div className="search-bar">
@@ -38,7 +37,7 @@ export default function SearchBar({ userList, onSearch }) {
                 onChange={(e) => setZipcode(e.target.value)}
             />
             <div className="buttons">
-                    <button className="btn-1" onClick={loginPage}>Save my list</button>
+                    <button className="btn-1" onClick={newList}>Save my list</button>
                     <button className="btn-2" onClick={handleSearch}>Find my deals</button>
             </div>
           </div>

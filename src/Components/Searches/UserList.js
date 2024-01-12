@@ -1,7 +1,6 @@
 import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import axios from "axios";
 import SearchResults from "./SearchResults";
 import "../../CSS/UserList.css";
 import cartIcon from "../../Images/cart-light-icon.png";
@@ -9,7 +8,8 @@ import cartIconHover from "../../Images/cart-solid-icon.png";
 import circleIcon from "../../Images/circle-minus-light-icon.png";
 import circleIconHover from "../../Images/circle-minus-solid-icon.png";
 import itemUnavailable from "../../Images/unavailable-item.png";
-import { AuthData } from "../../context/GetUser"
+import { AuthData } from "../../context/GetUser";
+import { useItemListContext } from "../../context/GetItems";
 
 //mock data 
 import storeData from "./mockData";
@@ -17,8 +17,9 @@ import storeData from "./mockData";
 const API = process.env.REACT_APP_API_URL;
 
 export default function UserList() {
+    //itemList that will store user's grocery list 
+    const { itemList, setItemList } = useItemListContext();
     const [inputValue, setInputValue] = useState("");
-    const [itemList, setItemList] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
     const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
@@ -33,6 +34,8 @@ export default function UserList() {
     const { loggedIn } = AuthData();
     const { user } = AuthData();
 
+   
+
     const addItem = () => {
         if (inputValue.trim() !== '') {
             //check for duplicate list items
@@ -40,12 +43,19 @@ export default function UserList() {
                 setErrorMessage("Item already added to the list");
             } else {
                 //Clear the input for the next entry
-                setItemList([...itemList, inputValue.toLowerCase()]);
+                setItemList((prevItemList) => [...prevItemList, inputValue.toLowerCase()]);
+                console.log(itemList);
                 setInputValue('');
                 setErrorMessage('');
+                
             }
         };
     };
+    
+    useEffect(() => {
+        // Handle updates to itemList here
+        console.log("Updated itemList:", itemList);
+      }, [itemList]);
 
     //this fxn removes an item from the list if the user no longer wants that on their grocery list
     const removeListItem = (removedItem) => {
@@ -166,7 +176,7 @@ export default function UserList() {
                     <h3>
                         <Link className="UserMenuLink"to={`/${user.username}`}> {user.username}'s List </Link> 
                     </h3>
-                    
+
                     : 
                     <h3>Your List</h3>}
                 </div>
@@ -239,5 +249,6 @@ export default function UserList() {
                 /> 
             </div>
         </div>
+        
     )
 }

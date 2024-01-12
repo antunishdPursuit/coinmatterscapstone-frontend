@@ -16,6 +16,7 @@ function UserListItem({ list }) {
       .then((res) => {
         console.log(res.data)
         setListItems(res.data)
+        console.log(listItems)
       })
       .catch((error) => {
           console.error("catch", error);
@@ -32,7 +33,7 @@ function UserListItem({ list }) {
               <img src="https://placehold.co/100x160" className="userListItem_box_features_img"></img>
               <div className="userListItem_box_features_items">
                 <p>{items.product_name}</p>
-                <p id="userListItem_box_features_items_price">$ {items.price.toFixed(2)}</p>
+                <p id="userListItem_box_features_items_price">$ {items.price}</p>
                 <p>From: {items.source}</p>
                 <p>Quantity: {items.quantity}</p>
               </div>

@@ -3,7 +3,7 @@ import { AuthData } from "../../context/GetUser"
 import { Link } from "react-router-dom";
 import UserListItem from "./UserListItem";
 import "./UserMenu.css"
-const API = process.env.REACT_APP_API_URL;
+// const API = process.env.REACT_APP_API_URL;
 
 function UserMenu() {
   const { user } = AuthData()
@@ -43,7 +43,6 @@ function UserMenu() {
           )
         })
         }
-
       </div>
     </div>
   )

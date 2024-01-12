@@ -1,4 +1,5 @@
-import SearchBar from "../components/Searches/oldSearchBar";
+
+import UserList from "../components/Searches/UserList";
 import logo from "../Images/pig-background.png"
 // import "../CSS/Search.css";
 
@@ -7,7 +8,7 @@ export default function Search() {
     return (
         <div className="page-container">
             <div>
-                <SearchBar />
+                <UserList />
             </div>
             <div className="background-img-container">
                 <img src={logo} alt="pig logo" />
