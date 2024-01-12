@@ -2,32 +2,29 @@
     font-family: 'Roboto', sans-serif;
     padding-top: 60px;
     display: flex;
-    justify-content: left;
-    /* border: 5px solid brown; */
+    justify-content: center;
     height: 70%;
-
 }
 
 .user-list-container {
-    /* border: 3px solid rgb(255, 9, 206); */
     margin-right: 100px;
     padding-left: 30px;
     padding-right: 30px;
 }
 .username {
-    /* border: 3px solid rgb(0, 255, 123); */
-    
+    /* border: 3px solid rgb(0, 255, 123); */ 
 }
 .item-search {
     display: flex;
     justify-content: space-between;
     gap: 5px;
     padding: 10px;
-    border: 1px solid rgba(14, 22, 16, 0.647);
+    border: .5px solid rgba(14, 22, 16, 0.647);
     border-radius: 10px;
     margin: 20px 0px 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 .item-search .list-icon img {
     width: 25px;
 }
@@ -48,7 +45,7 @@
     position: relative;
     border: 1px solid rgba(14, 22, 16, 0.647);
     border-radius: 10px;
-    border-bottom: 1px solid rgb(255, 9, 206);
+    border-bottom: .5px solid rgb(255, 9, 206);
     height: 500px;
     overflow: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -91,9 +88,10 @@
     right: 0;
     left: 0;
 }
+
 .zip-search span {
     /* border: 3px solid rgba(234, 0, 255, 0.647); */
-    margin-left: 4px;
+    margin-left: 8px;
 }
 
 .buttons {

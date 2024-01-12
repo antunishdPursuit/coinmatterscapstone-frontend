@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import searchResults from "../../CSS/SearchResults.module.css";
 import mockData from "./mockData";
+import logo from "../../Images/navLogo.png"
 
 //this fxn returns the results of the user's search
 export default function SearchResults({ cheapestOptions, areaMessage, totalPrices, bestDeal}) {
@@ -18,22 +19,16 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
           <div key={index} className={searchResults["store-container"]}>
             <div className={searchResults["store-logo"]}>
               <img src={mockData[store].logo} alt={`${store} logo`} />
+              <p>{mockData[store].name}</p>
             </div>
             <div className={searchResults["store-results"]}>
               {cheapestOptions[store].map((option, optionIndex) => (
                 <div key={optionIndex} className={searchResults["item-container"]}>
-                  <div className={searchResults["item"]}>
-                    <ul>
-                      <li className={option.className}>
-                        <img
-                          style={option.className === 'unavailable-item' ? { width: '80px'} : {}}
-                          src={option.image} 
-                          alt="Product Thumbnail"
-                        />
-                      </li>
-                      <li><p>{option.item}</p></li>
-                    </ul>
-                  </div>
+                  <img
+                    src={option.image} 
+                    alt="Product Thumbnail"
+                  />
+                  <div>{option.item}</div>
                   <div className={searchResults["item-price"]}>{option.price}</div>
                 </div>
               ))}
@@ -42,7 +37,7 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
               <p style={{"font-size": "12px"}}>Total cost</p>
               <p>
                 ${totalPrices[store]}{bestDeal.store === store ? <span className={searchResults["best-deal-label"]}>best deal</span> : null}
-                </p>
+              </p>
             </div>
             <div className={searchResults["store-link"]}>
               {/* target = "_blank" is a html command that ensures the link opens up in a new tab/window & rel="noopener noreferrer" attribute sets the security standards for opening links in a new tab/window*/}
@@ -56,7 +51,7 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
       ) : (
         <div className={searchResults["empty-results"]}>
           <img 
-            src="http://localhost:3000/static/media/navLogo.34faa592b401eec94f17.png" 
+            src={logo} 
             alt="logo" />
           <p>{areaMessage}</p>
         </div>
