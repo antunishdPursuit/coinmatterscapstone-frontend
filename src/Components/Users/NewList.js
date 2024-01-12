@@ -29,7 +29,7 @@ export default function NewList() {
          .post(`${API}/lists/${userId}`, list)
          .then((response) => {
             console.log("List added to the lists route:", response.data);
-            setList(response.data);
+            setList(response.config.adapter.data);
             navigate('/:user');
          
             //make another POST request to the "/user/:user_id" route to add to the user-specific list 
