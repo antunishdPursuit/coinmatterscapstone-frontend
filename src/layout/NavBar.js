@@ -9,6 +9,7 @@ const API = process.env.REACT_APP_API_URL;
 function NavBar() { 
   const { loggedIn } = AuthData();
   const { logout } = AuthData();
+  const { user } = AuthData()
   
   function LogOut(){
     axios
@@ -32,10 +33,13 @@ function NavBar() {
       </div>
       <div className="navbar-links">
         <Link className="links-tab" to="/">Home</Link>
-        <Link className="links-tab" to="/about">About Us</Link>
+        <Link className="links-tab" to="/about">About</Link>
         <Link className="links-tab" to="/search">Search</Link>
         {loggedIn ? 
-          <Link className="links-tab" onClick={LogOut}>Log Out</Link>
+          <>
+            <Link className="links-tab" to={`/${user.username}`}>Profile</Link>
+            <Link className="links-tab" onClick={LogOut}>Log Out</Link>
+          </>
           
         : 
           <Link className="links-tab" ></Link>

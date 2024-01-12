@@ -1,17 +1,18 @@
 .footer {
     background-color: #ff69b4;
     color: white;
-    padding: 40px;
+    padding: 20px;
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .footer__col {
     display: flex;
     flex-direction: column;
     width: 33%;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer__col a {
@@ -20,9 +21,19 @@
     text-decoration: none;
     color: black;
     padding-top: 10px;
-    font-size: large;
+    font-size: medium;
 }
 
 .footer__col a:hover {
     color: yellow;
+}
+
+.github{
+    text-align: center;
+}
+
+.footer__col_title{
+    margin-top: 0px;
+    font-size: 20px;
+    margin-bottom: 0px;
 }

@@ -5,3 +5,5 @@ export default function CompareCarts() {
         </div>
     )
 }
+
+// remove compare carts

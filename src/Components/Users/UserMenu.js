@@ -22,7 +22,7 @@ function UserMenu() {
     <div className="usermenuBox">
       <div className="usermenuBox1">
         <div>{user.username}</div>
-        <img src="https://placehold.co/140x200"></img>
+        <img src="https://randomuser.me/api/portraits/women/69.jpg"></img>
         <button className="username_email_button"onClick={showEmail}>{hidden ? "Show" : "Hide"} Email</button>
         {hidden ? 
         <div></div>

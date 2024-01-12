@@ -22,9 +22,11 @@ export default function SearchBar({ userList, onSearch }) {
     }
    
 
+
     const newList = () => {
       navigate("/list/new")
     }
+    
     return (
         <div className="search-bar-container">
           <div className="search-bar">
