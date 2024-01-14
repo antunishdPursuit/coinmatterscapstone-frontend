@@ -1,17 +1,20 @@
-body {
-  font-family: Arial, sans-serif;
-}
 
 .about-banner {
-  background-color: #f277c5;
+  background-image: url("../Images/navLogo.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: center;
+  background-position-y: top;
+  display: flex;
   color: black;
   text-align: center;
   padding: 3%;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .about-banner h1 {
   font-size: 3.5rem;
-  font-family: "Snell Roundhand", cursive; 
   margin: 0;
 }
 
@@ -21,6 +24,12 @@ body {
   border-radius: 50%;
 }
 
+.about-background-box{
+  background-color: #ffffff;
+  opacity: 0.9;
+  width: 400px
+
+}
 .team {
   display: flex;
   flex-wrap: wrap;
@@ -28,15 +37,6 @@ body {
   padding: 20px;
 }
 
-/* .team-member {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin: 20px;
-  max-width: 300px;
-  text-align: center;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-} */
 .team-member {
   text-align: center;
   margin: 20px;
