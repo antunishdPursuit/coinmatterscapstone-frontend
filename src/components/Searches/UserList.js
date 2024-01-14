@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import  { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
@@ -10,9 +10,7 @@ import circleIconHover from "../../Images/circle-minus-solid-icon.png";
 import itemUnavailable from "../../Images/unavailable-item.png";
 import { AuthData } from "../../context/GetUser";
 import { useItemListContext } from "../../context/GetItems";
-
-//mock data 
-import storeData from "./mockData";
+import axios from 'axios';
 
 export default function UserList() {
     //itemList that will store user's grocery list 
@@ -21,6 +19,30 @@ export default function UserList() {
     const [errorMessage, setErrorMessage] = useState("");
     const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
+    const [oneUserData, setOneUserData] = useState('');
+    const [stores, setStores] = useState([]);
+
+    //Products Data Retrieved Here
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${API}/products`)
+        .then((response) => {
+            console.log(response.data)
+            setProducts(response.data);
+        })
+        .catch((e) => console.error("error fetching data", e));
+    }, []);
+
+    //Retailers/Stores data retrieved here
+        useEffect(() => {
+            axios.get(`${API}/retailer`)
+            .then((response) => {
+                console.log(response.data)
+                setStores(response.data);
+            })
+            .catch((e) => console.error("error fetching data", e));
+        }, []);
 
     //this is a hover state for list icons such as the shopping cart and minus button  for a user-friendly interface 
     const [isHovered, setIsHovered] = useState(false);
@@ -64,8 +86,13 @@ export default function UserList() {
     const findCheapestOptions = (itemList, zipcode) => {
         const updatedCheapestOptions = { ...cheapestOptions };
 
-        //this function filters stores in a specific area when a user enters their zip  
-        const validStores = Object.keys(storeData).filter(store => storeData[store].zipcodes.includes(zipcode));
+        //this function filters stores in a specific area when a user enters their zip
+        zipcode = Number(zipcode)
+        const validStores = stores.filter(store => store.zipcodes_array.includes(zipcode)).map(store => ({...store,zipcodes_array: [...store.zipcodes_array],
+        }));
+
+        console.log(validStores);
+        
         if (validStores.length === 0) {
             setCheapestOptions({});
             setAreaMessage("Sorry, at the moment we do not have store details for that zip code yet. We are working on expanding our location coverage. Please check back soon.")
@@ -74,12 +101,12 @@ export default function UserList() {
 
         //now that we have the stores in a specific location we will iterate over them; checking for the cheapest item(s) that closely match user's list
         validStores.forEach(store => {
-            updatedCheapestOptions[store] = [];
+            updatedCheapestOptions[store.retailer_id] = [];
 
             //iterate over each item in the user's list
             itemList.forEach(item => {
-                const storeProducts = storeData[store].products.filter(product => product.title.toLowerCase().includes(item.toLowerCase())
-                );
+                const storeProducts = products.filter(product => (product.retailer_id) === (store.retailer_id) && ((product.product_name.toLowerCase()).includes(item.toLowerCase()))
+                  );
 
                 //find the cheapest product among the matching products
                 if (storeProducts.length > 0) {
@@ -88,20 +115,23 @@ export default function UserList() {
                     }, storeProducts[0]);
 
                     //push the cheapest product into the cheapestOptions[store] array
-                    updatedCheapestOptions[store].push({ 
-                        item: cheapestProduct.title, 
-                        price: cheapestProduct.price, 
+                    updatedCheapestOptions[store.retailer_id].push({
+                        store: store.retailer_name,
+                        item: cheapestProduct.product_name,
+                        price: cheapestProduct.price,
                         image: cheapestProduct.thumbnail,
-                        link: storeData[store].website,
+                        link: store.website,
                     });
                 } else {
-                    updatedCheapestOptions[store].push({ 
+                    updatedCheapestOptions[store.retailer_id].push({ 
+                        store: store.retailer_name,
                         item: `sorry, our list for ${store} doesn't have ${item}.`,
                         image: itemUnavailable,
                         className: 'unavailable-item',
                         price: 0,
                     });
                 }
+                console.log(updatedCheapestOptions)
             });
         });
         setCheapestOptions(updatedCheapestOptions);
@@ -121,7 +151,7 @@ export default function UserList() {
                     return sum;
                 }
 
-                return sum + Number(item.price.substring(1))
+                return sum + Number(item.price)
             }, 0);
 
             totalPrices[store] = storeTotalPrice.toFixed(2);
@@ -157,7 +187,7 @@ export default function UserList() {
         };
     }
 
-//useEffect is used to update the states and information inside the objects cheapestOptions and prices.
+ //useEffect is used to update the states and information inside the objects cheapestOptions and prices.
     useEffect(() => {
         calculateTotalPrice(cheapestOptions);
         bestDeal(prices);
