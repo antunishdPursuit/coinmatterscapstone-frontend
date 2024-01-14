@@ -16,12 +16,11 @@ function UserListItem({ list }) {
       .then((res) => {
         console.log(res.data)
         setListItems(res.data)
-        console.log(listItems)
       })
       .catch((error) => {
           console.error("catch", error);
       });
-  }, [])
+  }, [instance, list.user_id, list.list_id,setListItems ])
   
   return (
     <div key={list.list_id} className="userListItem_box">
@@ -30,7 +29,7 @@ function UserListItem({ list }) {
         {listItems.map((items, index) => {
           return (
             <div key={index} className="userListItem_box_features">
-              <img src="https://placehold.co/100x160" className="userListItem_box_features_img"></img>
+              <img src="https://placehold.co/100x160" className="userListItem_box_features_img" alt="product"></img>
               <div className="userListItem_box_features_items">
                 <p>{items.product_name}</p>
                 <p id="userListItem_box_features_items_price">$ {items.price}</p>

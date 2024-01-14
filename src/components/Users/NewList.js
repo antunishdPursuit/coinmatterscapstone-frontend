@@ -9,7 +9,7 @@ const API = process.env.REACT_APP_API_URL;
 export default function NewList() {
     const navigate = useNavigate();
     const { user } = AuthData();
-    const { itemList, setItemList } = useItemListContext();
+    const { itemList } = useItemListContext();
     const [list, setList] = useState({
         user_id: user.user_id,
         list_name: "",
