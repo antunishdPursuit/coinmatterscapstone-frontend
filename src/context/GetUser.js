@@ -56,7 +56,25 @@ export const AuthWrapper = () => {
       .catch((error) => {
         console.error("catch", error);
       });
-  }, [instance, setUser, setUserList]);
+
+  useEffect(() => {
+    if (user) {
+      getUserList(user.user_id)
+    }
+  }, [user]);
+
+  // get user list
+  const getUserList = (userId) => {
+    console.log(userId)
+    instance
+      .get(`${API}/lists/user/${userId}`)
+      .then((res) => {
+        setUserList(res.data)
+      })
+      .catch((error) => {
+          console.error("catch", error);
+      });
+  }
 
   const logout = () => {
     setUser({ ...user, isAuthenticated: false });

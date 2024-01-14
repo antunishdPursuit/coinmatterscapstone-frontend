@@ -10,6 +10,7 @@
     margin-right: 100px;
     padding-left: 30px;
     padding-right: 30px;
+    border: .5px solid rgba(21, 81, 223, 0.647);
 }
 .username {
     /* border: 3px solid rgb(0, 255, 123); */ 
@@ -45,19 +46,20 @@
     position: relative;
     border: 1px solid rgba(14, 22, 16, 0.647);
     border-radius: 10px;
-    border-bottom: .5px solid rgb(255, 9, 206);
+    /* border-bottom: .5px solid rgb(255, 9, 206); */
     height: 500px;
     overflow: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: .5px solid rgba(14, 22, 16, 0.647);
 }
 
 .user-list {
     display: flex;
     justify-content: center;
-    /* border: 1px solid rgba(14, 22, 16, 0.647); */
+    border: 1px solid rgba(149, 18, 140, 0.647);
+    border-bottom: .5px solid rgb(255, 9, 206);
     border-radius: 10px;
     padding: 0px 0px 10px;
-    margin-bottom: 10px;
 }
 
 .user-list ul {
