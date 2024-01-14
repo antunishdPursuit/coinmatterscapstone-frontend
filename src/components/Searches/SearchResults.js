@@ -16,11 +16,8 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
             {Object.keys(cheapestOptions).length > 0 ? (
         Object.keys(cheapestOptions).map((store, index) => (
           <div key={index} className={searchResults["store-container"]}>
-            <div className={searchResults["store-logo"]}>
-              <img src={mockData[store].logo} alt={`${store} logo`} />
-              <p>{mockData[store].name}</p>
-            </div>
-            <div className={searchResults["store-results"]}>
+          <div className={searchResults["store-logo"]}>{cheapestOptions[store][0].store}</div>
+          <div className={searchResults["store-results"]}>
               {cheapestOptions[store].map((option, optionIndex) => (
                 <div key={optionIndex} className={searchResults["item-container"]}>
                   <img
@@ -28,7 +25,7 @@ export default function SearchResults({ cheapestOptions, areaMessage, totalPrice
                     alt="Product Thumbnail"
                   />
                   <div>{option.item}</div>
-                  <div className={searchResults["item-price"]}>{option.price}</div>
+                  <div className={searchResults["item-price"]}>${option.price}</div>
                 </div>
               ))}
             </div>
