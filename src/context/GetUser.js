@@ -61,13 +61,20 @@ export const AuthWrapper = () => {
       });
   }
 
+  useEffect(() => {
+    if (user) {
+      getUserList(user.user_id)
+    }
+  }, [user]);
+
   // get user list
   const getUserList = (userId) => {
     console.log(userId)
     instance
-      .get(`${API}/users/2/lists`)
+      .get(`${API}/lists/user/${userId}`)
       .then((res) => {
         setUserList(res.data)
+        console.log(userList);
       })
       .catch((error) => {
           console.error("catch", error);

@@ -13,6 +13,8 @@ import { useItemListContext } from "../../context/GetItems";
 
 //mock data 
 import storeData from "./mockData";
+//images for user list
+import images from "./listImages";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -24,6 +26,7 @@ export default function UserList() {
     const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
     const [oneUserData, setOneUserData] = useState('');
+    const [matchedImages, setMatchedImages] = useState([]);
 
     //this is a hover state for list icons such as the shopping cart and minus button  for a user-friendly interface 
     const [isHovered, setIsHovered] = useState(false);
@@ -34,7 +37,20 @@ export default function UserList() {
     const { loggedIn } = AuthData();
     const { user } = AuthData();
 
-   
+    //add pictures to user's itemList
+    const defaultProductImage = "https://png.pngtree.com/thumb_back/fh260/background/20230721/pngtree-assorted-grocery-items-arranged-in-a-white-3d-rendering-of-a-image_3722980.jpg";
+
+    //useEffect is used to updated matchedImages when itemList changes
+    useEffect(() => {
+        const updatedMatchedImages = itemList.map((itemName) => {
+            const matchingImage = images.find((image) => image.name.includes(itemName));
+            return matchingImage || { name: itemName, image: defaultProductImage };
+        });
+
+        setMatchedImages(updatedMatchedImages);
+    }, [itemList]);
+
+    console.log(matchedImages);
 
     const addItem = () => {
         if (inputValue.trim() !== '') {
@@ -51,7 +67,7 @@ export default function UserList() {
             }
         };
     };
-    
+
     useEffect(() => {
         // Handle updates to itemList here
         console.log("Updated itemList:", itemList);
@@ -61,6 +77,10 @@ export default function UserList() {
     const removeListItem = (removedItem) => {
         const updatedList = itemList.filter((item)=> item.toLowerCase() !== removedItem.toLowerCase());
         setItemList(updatedList);
+
+        setMatchedImages((prevMatchedImages) =>
+        prevMatchedImages.filter((image) => image.name.toLowerCase() !== removedItem.toLowerCase())
+        );
     }
 
     //this fxn takes in the itemList (user's grocery list) and the entered zipcode from the SearchBar component to find validStores. validStores are stores within that zipcode. Stores in the area are then evaluated to check for the cheapest store items that match the items on the user's itemList 
@@ -207,10 +227,15 @@ export default function UserList() {
                 <div className="user-box">
                     <div className="user-list">
                         <ul>
-                            {itemList.map((item, i) => (
+                            {matchedImages.map((item, i) => (
                             <>
-                                <div className="item">
-                                    <li key={i}>{item}</li>
+                                <div key={i} className="item">
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        style={{ width: "50px", height: "50px" }}
+                                    />
+                                    <li>{item.name}</li>
                                     <button 
                                         className="list-icon" 
                                         key ={i}
@@ -225,7 +250,7 @@ export default function UserList() {
                                             newHoverStates[i] = false;
                                             setIsMinusHovered(newHoverStates);
                                         }}
-                                        onClick={() => removeListItem(item)}>
+                                        onClick={() => removeListItem(item.name)}>
                                         <img 
                                             src={isMinusHovered[i] ? circleIconHover : circleIcon}
                                             alt="minus icon"

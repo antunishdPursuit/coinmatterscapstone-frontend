@@ -18,6 +18,11 @@ function UserMenu() {
 
     }
   }
+  console.log(userList);
+  console.log(userList.lists);
+
+  const lists = userList.lists;
+
   return (
     <div className="usermenuBox">
       <div className="usermenuBox1">
@@ -30,14 +35,14 @@ function UserMenu() {
         <div className="username_email">{user.email}</div> 
         }
         
-        <p>{userList.length === 0 ? <Link className="startSaving" to="/search">Start Saving, Add a List!</Link>: `# of Lists: ${userList.length}`}</p>
+        <p>{lists.length === 0 ? <Link className="startSaving" to="/search">Start Saving, Add a List!</Link>: `# of Lists: ${lists.length}`}</p>
       </div>
       <div className="usermenuBox2">
-        {userList.length === 0 
+        {lists.length === 0 
         ? 
         <h1 className="usermenuBox2_No_Lists">No Lists have been added</h1>
         : 
-        userList.map(list => {
+        lists.map(list => {
           return (
             <UserListItem key={list.list_id} list={list}></UserListItem>
           )
