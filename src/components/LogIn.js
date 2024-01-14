@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "../CSS/Register.css"
 import { AuthData } from "../context/GetUser"
 
-const API = process.env.REACT_APP_API_URL;
-
 function LogIn() {
   const navigate = useNavigate();
   const [user, setUser] = useState({

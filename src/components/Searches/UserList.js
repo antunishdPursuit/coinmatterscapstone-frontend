@@ -14,8 +14,6 @@ import { useItemListContext } from "../../context/GetItems";
 //mock data 
 import storeData from "./mockData";
 
-const API = process.env.REACT_APP_API_URL;
-
 export default function UserList() {
     //itemList that will store user's grocery list 
     const { itemList, setItemList } = useItemListContext();
@@ -23,7 +21,6 @@ export default function UserList() {
     const [errorMessage, setErrorMessage] = useState("");
     const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
-    const [oneUserData, setOneUserData] = useState('');
 
     //this is a hover state for list icons such as the shopping cart and minus button  for a user-friendly interface 
     const [isHovered, setIsHovered] = useState(false);
@@ -164,8 +161,7 @@ export default function UserList() {
     useEffect(() => {
         calculateTotalPrice(cheapestOptions);
         bestDeal(prices);
-        console.log(bestDeal(prices));
-    }, [cheapestOptions]);
+    }, [cheapestOptions, prices]);
 
     return (
         <div className="search-page-container">

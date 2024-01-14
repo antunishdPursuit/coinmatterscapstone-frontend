@@ -5,7 +5,6 @@ import {
   faLinkedin,
   faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
-import logo from "../Images/logo.png";
 
 const teamMembers = [
   // {
