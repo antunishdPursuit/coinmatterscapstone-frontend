@@ -16,7 +16,6 @@ import storeData from "./mockData";
 //images for user list
 import images from "./listImages";
 
-const API = process.env.REACT_APP_API_URL;
 
 export default function UserList() {
     //itemList that will store user's grocery list 
@@ -25,7 +24,6 @@ export default function UserList() {
     const [errorMessage, setErrorMessage] = useState("");
     const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
-    const [oneUserData, setOneUserData] = useState('');
     const [matchedImages, setMatchedImages] = useState([]);
 
     //this is a hover state for list icons such as the shopping cart and minus button  for a user-friendly interface 
