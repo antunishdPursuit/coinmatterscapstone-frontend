@@ -20,7 +20,7 @@ function UserListItem({ list }) {
       .catch((error) => {
           console.error("catch", error);
       });
-  }, [instance, list.user_id, list.list_id,setListItems ])
+  }, [])
   
   return (
     <div key={list.list_id} className="userListItem_box">
