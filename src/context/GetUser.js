@@ -8,77 +8,51 @@ export const AuthData = () => useContext(AuthContext);
 
 const API = process.env.REACT_APP_API_URL;
 
+const instance = axios.create({
+  withCredentials: true,
+});
+
 export const AuthWrapper = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   const [userList, setUserList] = useState({});
   const location = useLocation();
 
-  const instance = axios.create({
-    withCredentials: true,
-  });
-
-  // Logging in the user
-  const logInUser = (existingUser) => {
-    console.log("Attempting login...");
+  const getUserList = useCallback((userId) => {
+    console.log(userId);
     instance
-      .post(`${API}/login`, existingUser)
+      .get(`${API}lists/user/${userId}`)
       .then((res) => {
-        console.log("Login successful");
-        setLoggedIn(true);
+        setUserList(res.data);
       })
       .catch((error) => {
-        console.error("Login failed", error);
+        console.error("Error fetching user list", error);
       });
-  };
+  }, []);
 
-  // Makes it so that every time the route changes, the function is triggered
   const getUserData = useCallback(() => {
-    // Get user list
-    const getUserList = (userId) => {
-      console.log(userId);
-      instance
-        .get(`${API}/users/2/lists`)
-        .then((res) => {
-          setUserList(res.data);
-        })
-        .catch((error) => {
-          console.error("catch", error);
-        });
-    };
-
     instance
       .get(`${API}/user`)
       .then((res) => {
         setUser(res.data.authorizedData);
-        getUserList(res.data.authorizedData.user_id);
+        if (res.data.authorizedData) {
+          getUserList(res.data.authorizedData.user_id);
+        }
       })
       .catch((error) => {
-        console.error("catch", error);
+        console.error("Error fetching user data", error);
       });
-
-  useEffect(() => {
-    if (user) {
-      getUserList(user.user_id)
-    }
-  }, [user]);
-
-  // get user list
-  const getUserList = (userId) => {
-    console.log(userId)
-    instance
-      .get(`${API}/lists/user/${userId}`)
-      .then((res) => {
-        setUserList(res.data)
-      })
-      .catch((error) => {
-          console.error("catch", error);
-      });
-  }
+  }, [getUserList]);
 
   const logout = () => {
     setUser({ ...user, isAuthenticated: false });
   };
+
+  useEffect(() => {
+    if (user) {
+      getUserList(user.user_id);
+    }
+  }, [user, getUserList]);
 
   useEffect(() => {
     console.log(`The current route is ${location.pathname}`);
@@ -93,13 +67,14 @@ export const AuthWrapper = () => {
       })
       .catch((error) => {
         // If the server responds with an error status, the cookie does not exist
+        console.error("Error checking login status", error);
         console.log("Cookie Not Set");
       });
   }, [location, getUserData, setLoggedIn]);
 
   return (
     <AuthContext.Provider value={{ user, logInUser, logout, getUserData, loggedIn, userList }}>
-      <App></App>
+      <App />
     </AuthContext.Provider>
   );
 };
