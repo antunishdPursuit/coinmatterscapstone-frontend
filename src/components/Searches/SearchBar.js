@@ -21,8 +21,6 @@ export default function SearchBar({ userList, onSearch }) {
         onSearch(userList, zipcode);
     }
    
-
-
     const newList = () => {
       navigate("/list/new")
     }
