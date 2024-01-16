@@ -6,10 +6,6 @@ import logo from "../../Images/navLogo.png"
 //this fxn returns the results of the user's search
 export default function SearchResults({ cheapestOptions, areaMessage, totalPrices, bestDeal}) {
 
-  useEffect(() => {
-    console.log('Cheapest options updated:', cheapestOptions);
-  }, [cheapestOptions]);
-
     return (
         <div className={searchResults["result-page"]}>
             <div className={searchResults["results-container"]}>
