@@ -27,6 +27,8 @@ export default function UserList() {
     const [cheapestOptions, setCheapestOptions] = useState({});
     const [stores, setStores] = useState([]);
 
+    const API = process.env.REACT_APP_API_URL;
+
     //Products Data Retrieved Here
     const [products, setProducts] = useState([]);
 

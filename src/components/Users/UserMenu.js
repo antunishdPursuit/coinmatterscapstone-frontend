@@ -53,4 +53,4 @@ function UserMenu() {
   )
 }
 
-export default UserMenu
+export default UserMenu;

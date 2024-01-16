@@ -53,7 +53,8 @@ export const AuthWrapper = () => {
       .get(`${API}/user`)
       .then((res) => {
         setUser(res.data.authorizedData)
-        getUserList(res.data.authorizedData.user_id)
+        console.log(user);
+        // getUserList(res.data.authorizedData.user_id)
       })
       .catch((error) => {
           console.error("catch", error);
