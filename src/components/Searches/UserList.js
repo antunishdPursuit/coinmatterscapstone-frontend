@@ -33,7 +33,6 @@ export default function UserList() {
     useEffect(() => {
         axios.get(`${API}/products`)
         .then((response) => {
-            console.log(response.data)
             setProducts(response.data);
         })
         .catch((e) => console.error("error fetching data", e));
@@ -43,7 +42,6 @@ export default function UserList() {
         useEffect(() => {
             axios.get(`${API}/retailer`)
             .then((response) => {
-                console.log(response.data)
                 setStores(response.data);
             })
             .catch((e) => console.error("error fetching data", e));
@@ -73,8 +71,6 @@ export default function UserList() {
         setMatchedImages(updatedMatchedImages);
     }, [itemList]);
 
-    console.log(matchedImages);
-
     const addItem = () => {
         if (inputValue.trim() !== '') {
             //check for duplicate list items
@@ -91,10 +87,6 @@ export default function UserList() {
         };
     };
 
-    useEffect(() => {
-        // Handle updates to itemList here
-        console.log("Updated itemList:", itemList);
-      }, [itemList]);
 
     //this fxn removes an item from the list if the user no longer wants that on their grocery list
     const removeListItem = (removedItem) => {
@@ -163,7 +155,6 @@ export default function UserList() {
 
     //this fxn takes in the cheapestOptions which is an object of the matched items, store name, and price for each item. this fxn is responsible for calculating and returning the total price for all items within one store. For example, if you have 5 items from Target. the price of all those items are calculated and printed in a human readable form. This fxn returns the store name and the total price of all groceries from that store. Ex: {store: Walmart, total: $18}
     const calculateTotalPrice = (cheapestOptions) => {
-        console.log(cheapestOptions);
 
         const totalPrices = {};
 
@@ -180,7 +171,6 @@ export default function UserList() {
 
             totalPrices[store] = storeTotalPrice.toFixed(2);
         });
-        console.log(totalPrices);
         return totalPrices;
     }
 
