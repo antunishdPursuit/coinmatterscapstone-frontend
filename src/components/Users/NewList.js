@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthData } from "../../context/GetUser";
 import { useItemListContext } from "../../context/GetItems";
+import "../../CSS/New-List.css";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -31,18 +32,6 @@ export default function NewList() {
             console.log("List added to the lists route:", response.data);
             setList(response.config.adapter.data);
             navigate('/:user');
-         
-            //make another POST request to the "/user/:user_id" route to add to the user-specific list 
-        //     axios
-        //     .post(`${API}/lists/user/${userId}`, list)
-        //     .then((responseUser) => {
-        //         console.log("List added to /user/:user_id route:", responseUser.data);
-        //         setList(responseUser.data);
-        //         navigate('/:user');
-        //     })
-        //     .catch((errorUser) => {
-        //         console.error("Error adding list to /user/:user_id route", errorUser);
-        //     });
         })
         .catch((e) => {
             console.error("Error adding list to /lists route", e);
@@ -75,45 +64,63 @@ export default function NewList() {
     };
 
     return (
-        <div className="new-list">
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="list_name">Name:</label>
-                <input
-                    id="list_name"
-                    value={list.name}
-                    type="text"
-                    onChange={handleTextChange}
-                    placeholder="Name of list"
-                    required
-                />
-                <label htmlFor="products">Products:</label>
-                {list.products.map((product, index) => (
-                    <div key={index}>
+        <div className="page-wrapper">
+            <div className="new-list">
+                <form onSubmit={handleSubmit}>
+                    <div className="list-title">
+                        <label htmlFor="list_name">Name:</label>
                         <input
-                            value={product}
+                            id="list_name"
+                            value={list.name}
                             type="text"
-                            onChange={(e) => handleProductChange(index, e.target.value)}
-                            placeholder={`Product ${index + 1}`}
+                            onChange={handleTextChange}
+                            placeholder="Name of list"
+                            required
                         />
                     </div>
-                ))}
-                <button type="button" onClick={handleAddProduct}>
-                    Add Product
-                </button>
-                <label htmlFor="note">Note:</label>
-                <textarea 
-                    id="note"
-                    value={list.note}
-                    type="text"
-                    placeholder="Any details you want to add?"
-                    onChange={handleTextChange}
-                />
-                <br />
-                <input type="submit" />
-                <button>
-                    <Link to="/search">Nevermind!</Link>
-                </button>
-            </form>
+                    <div className="list-products">
+                        <label htmlFor="products">Products:</label>
+                        <div className="list-products-box">
+                            {list.products.map((product, index) => (
+                                <div key={index}>
+                                    <input
+                                        value={product}
+                                        type="text"
+                                        onChange={(e) => handleProductChange(index, e.target.value)}
+                                        placeholder={`Product ${index + 1}`}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="product-btn">
+                        <button className="list-button" type="button" onClick={handleAddProduct}>
+                            Add Product
+                        </button>
+                    </div>
+                        
+                    <div className="note-section">
+                        <label htmlFor="note">Note:</label>
+                        <div className="note">
+                            <textarea 
+                            id="note"
+                            value={list.note}
+                            type="text"
+                            placeholder="Any details you want to add?"
+                            onChange={handleTextChange}
+                            />
+                        </div>
+                    </div>
+                    <br />
+                    <div className="space-out-btns">
+                        <input className="list-button" type="submit" />
+                        <button className="list-button">
+                            <Link to="/search">Nevermind!</Link>
+                        </button>
+                    </div>
+                    
+                </form>
+            </div>
         </div>
     );
 }
