@@ -1,46 +1,79 @@
 import { useEffect,useState } from "react";
 import axios from "axios";
 import "./UserListItem.css"
+import images from "../Searches/listImages";
+
 const API = process.env.REACT_APP_API_URL;
 
 function UserListItem({ list }) {
-  const [listItems, setListItems] = useState([])
-  const instance = axios.create({
-    withCredentials: true,
-  })
+  const [updatedList, setUpdatedList] = useState([]);
+  const [matchedImages, setMatchedImages] = useState([]);
+  const [menuList, setMenuList] = useState([]);
+  console.log(list);
 
+  function removeEmptyStrings(arr) {
+    return arr.filter(item => item.trim() !== '');
+  }
+  function formattedDate(str) {
+    const date = new Date(str);
+    return date.toLocaleDateString();
+  }
   useEffect(() => {
-    // the 2 should be replaced by ${list.user_id} after evertyhing else works
-    instance
-      .get(`${API}/users/${list.user_id}/lists/${list.list_id}/products`)
-      .then((res) => {
-        console.log(res.data)
-        setListItems(res.data)
-      })
-      .catch((error) => {
-          console.error("catch", error);
-      });
-  }, [])
-  
+    setUpdatedList(removeEmptyStrings(list.products));
+  }, [list.products, list]);
+
+  //default picture for image display
+  const defaultProductImage = "https://png.pngtree.com/thumb_back/fh260/background/20230721/pngtree-assorted-grocery-items-arranged-in-a-white-3d-rendering-of-a-image_3722980.jpg";
+
+  //useEffect is used to updated matchedImages when itemList changes
+  useEffect(() => {
+    const updatedMatchedImages = updatedList.map((itemName) => {
+        const matchingImage = images.find((image) => itemName.includes(image.name));
+        return matchingImage || { name: itemName, image: defaultProductImage };
+    });
+
+    setMatchedImages(updatedMatchedImages);
+}, [list]);
+
+console.log(matchedImages);
+
+//this fxn removes an item from the list if the user no longer wants that on their grocery list
+// const removeListItem = (removedItem) => {
+//   const removeList = updatedList.filter((item)=> item.toLowerCase() !== removedItem.toLowerCase());
+//   setMenuList(removeList);
+
+//   setMatchedImages((prevMatchedImages) =>
+//   prevMatchedImages.filter((image) => image.name.toLowerCase() !== removedItem.toLowerCase())
+//   );
+// }
+
+
   return (
     <div key={list.list_id} className="userListItem_box">
-      <p className="userListItem_box_name">Name: {list.list_name}</p>
-      <div className="userListItem_box_flex" >
-        {listItems.map((items, index) => {
-          return (
-            <div key={index} className="userListItem_box_features">
-              <img src="https://placehold.co/100x160" className="userListItem_box_features_img" alt="product"></img>
-              <div className="userListItem_box_features_items">
-                <p>{items.product_name}</p>
-                <p id="userListItem_box_features_items_price">$ {items.price}</p>
-                <p>From: {items.source}</p>
-                <p>Quantity: {items.quantity}</p>
-              </div>
-            </div>
-          )
-        })}
+      <h4 className="userListItem_box_name">{list.list_name}</h4>
+      <div className="date-created">Date Created: {formattedDate(list.date_created)}</div>
+      <div className="userList-container">
+        <div className="saved-items">
+          <ul>
+              {matchedImages.map((item, i) => (
+              <>
+                  <div key={i} className="list-item">
+                      <img
+                          src={item.image}
+                          alt={item.name}
+                          style={{ width: "50px", height: "50px" }}
+                      />
+                      <li>{item.name}</li>
+                  </div>
+              </>
+              ))}
+          </ul>
+          <div className="user-note">
+            <span>Note: </span>{list.note}
+          </div>
+        </div>
       </div>
-  </div>
+    </div>
   )
 }
 

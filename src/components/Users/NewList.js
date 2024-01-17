@@ -16,10 +16,10 @@ export default function NewList() {
         list_name: "",
         products: [...itemList],
         note: "",
+        date_created: new Date().toISOString()
     });
 
     console.log(user.user_id);
-
 
     const addList = (list) => {
         const userId = user.user_id;
@@ -59,9 +59,11 @@ export default function NewList() {
         //remove empty item
         const filteredProducts = list.products.filter(item => item.trim() !== "");
         setList({ ...list, products: filteredProducts });
-        console.log(list);
+        console.log("this is the list object", list);
         addList(list);
     };
+
+    console.log(list)
 
     return (
         <div className="page-wrapper">

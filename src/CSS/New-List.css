@@ -40,6 +40,8 @@ body {
 }
 .new-list label {
     font-size: 20px;
+    color: rgb(237, 107, 211);
+    font-weight: 600;
 }
 .new-list input {
     margin-top: 4px;
@@ -123,7 +125,6 @@ body {
 .new-list .space-out-btns {
     display: flex;
     justify-content: space-between;
-    /* margin-top: 10px;  */
 }
 
 
