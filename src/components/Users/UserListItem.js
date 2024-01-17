@@ -29,7 +29,7 @@ function UserListItem({ list }) {
     });
 
     setMatchedImages(updatedMatchedImages);
-}, [list, list.products, matchedImages, updatedList]);
+}, [list, list.products, updatedList]);
 
 
 //this fxn removes an item from the list if the user no longer wants that on their grocery list
@@ -51,16 +51,14 @@ function UserListItem({ list }) {
         <div className="saved-items">
           <ul>
               {matchedImages.map((item, i) => (
-              <>
-                  <div key={i} className="list-item">
-                      <img
-                          src={item.image}
-                          alt={item.name}
-                          style={{ width: "50px", height: "50px" }}
-                      />
-                      <li>{item.name}</li>
-                  </div>
-              </>
+                <div key={i} className="list-item">
+                    <img
+                        src={item.image}
+                        alt={item.name}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                    <li>{item.name}</li>
+                </div>
               ))}
           </ul>
         </div>

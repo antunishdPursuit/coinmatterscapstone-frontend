@@ -19,8 +19,6 @@ export default function NewList() {
         date_created: new Date().toISOString()
     });
 
-    console.log(user.user_id);
-
     const addList = (list) => {
         const userId = user.user_id;
         console.log(user)
@@ -63,7 +61,6 @@ export default function NewList() {
         addList(list);
     };
 
-    console.log(list)
 
     return (
         <div className="page-wrapper">
