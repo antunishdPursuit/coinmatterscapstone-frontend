@@ -26,6 +26,7 @@ export default function UserList() {
     const [areaMessage, setAreaMessage] = useState("Add items to your list to start searching for the best deals near you!");
     const [cheapestOptions, setCheapestOptions] = useState({});
     const [stores, setStores] = useState([]);
+    const [matchedImages, setMatchedImages] = useState([]);
 
     const API = process.env.REACT_APP_API_URL;
 
@@ -48,7 +49,7 @@ export default function UserList() {
             })
             .catch((e) => console.error("error fetching data", e));
         }, []);
-    const [matchedImages, setMatchedImages] = useState([]);
+    
 
 
     //this is a hover state for list icons such as the shopping cart and minus button  for a user-friendly interface 
@@ -66,7 +67,7 @@ export default function UserList() {
     //useEffect is used to updated matchedImages when itemList changes
     useEffect(() => {
         const updatedMatchedImages = itemList.map((itemName) => {
-            const matchingImage = images.find((image) => image.name.includes(itemName));
+            const matchingImage = images.find((image) => itemName.includes(image.name));
             return matchingImage || { name: itemName, image: defaultProductImage };
         });
 
@@ -209,6 +210,9 @@ export default function UserList() {
         bestDeal(prices);
     }, [cheapestOptions, prices]);
 
+    const capitalizeFirstLetter = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
     return (
         <div className="search-page-container">
             <div className="user-list-container">
@@ -216,7 +220,7 @@ export default function UserList() {
                     {loggedIn
                     ? 
                     <h3>
-                        <Link className="UserMenuLink"to={`/${user.username}`}> {user.username}'s List </Link> 
+                        <Link className="UserMenuLink"to={`/${user.username}`}> {capitalizeFirstLetter(user.username)}'s List </Link> 
                     </h3>
 
                     : 

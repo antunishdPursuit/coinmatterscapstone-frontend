@@ -1,41 +1,64 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 .userListItem_box{
-    border-style: solid;
-    border-color: pink;
+    border: 1px solid purple;
+    border-radius: 25px;
     padding: 5px;
     margin: 5px;
-
+    width: 50%;
 }
-
 .userListItem_box_features{
     display: flex;
     flex-direction: row;
 }
-
 .userListItem_box_flex{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 .userListItem_box_name{
-    margin-left: 5px;
+    margin-bottom: 2px;
+    font-size: 20px;
 }
 
 .userListItem_box_features_img{
     margin-bottom: 5px;
     margin-left: 5px
 }
-
 .userListItem_box_features_items{
     margin-left: 5px;
 }
-
 .userListItem_box_features p {
     font-size: small;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.date-created {
+    padding-left: 0px;
+    font-size: small;
+    font-style: italic;
+}
 
 #userListItem_box_features_items_price{
     font-size: 20px;
 }
+.userList-container {
+    border: 1px solid rgb(23, 132, 103);
+    /* padding-left: 10px;   */
+}
+.saved-items {
+    border: 1px solid pink;
+    margin-bottom: 20px;
+}
+
+.saved-items li {
+    list-style: none;
+    padding: 10px 0;
+    border-bottom: 1px solid pink;
+}
+.user-note span {
+    font-weight: 600;
+}
+
 

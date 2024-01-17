@@ -18,6 +18,9 @@ function UserMenu() {
 
     }
   }
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
   console.log(userList);
   console.log(userList.lists);
 
@@ -26,16 +29,17 @@ function UserMenu() {
   return (
     <div className="usermenuBox">
       <div className="usermenuBox1">
-        <div>{user.username}</div>
-        <img src="https://randomuser.me/api/portraits/women/69.jpg" alt="a woman who uses this app"></img>
+        <div className="profile-pic">
+          <img src="https://t3.ftcdn.net/jpg/02/96/66/58/360_F_296665879_g3GUJU6Vv9KzKkcNyaQ4uXEcCzRT6hSc.jpg" alt="a woman who uses this app"></img>
+        </div>
+        <div className="user-name">{capitalizeFirstLetter(user.username)}</div>
         <button className="username_email_button"onClick={showEmail}>{hidden ? "Show" : "Hide"} Email</button>
         {hidden ? 
         <div></div>
         :
         <div className="username_email">{user.email}</div> 
         }
-        
-        <p>{lists.length === 0 ? <Link className="startSaving" to="/search">Start Saving, Add a List!</Link>: `# of Lists: ${lists.length}`}</p>
+        <p>{lists.length === 0 ? <Link className="startSaving" to="/search">Start Saving, Add a List!</Link>: `Number of Lists: ${lists.length}`}</p>
       </div>
       <div className="usermenuBox2">
         {lists.length === 0 
@@ -44,7 +48,10 @@ function UserMenu() {
         : 
         lists.map(list => {
           return (
-            <UserListItem key={list.list_id} list={list}></UserListItem>
+            <UserListItem 
+              key={list.list_id}
+              list={list} 
+            />
           )
         })
         }
