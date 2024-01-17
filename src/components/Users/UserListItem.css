@@ -44,18 +44,32 @@ body {
     font-size: 20px;
 }
 .userList-container {
-    border: 1px solid rgb(23, 132, 103);
-    /* padding-left: 10px;   */
+    border: 3px solid rgb(132, 23, 87);
+    max-height: 300px;
+    overflow-y: auto;
 }
-.saved-items {
-    border: 1px solid pink;
+.saved-items ul {
+    border: 1px solid rgb(52, 43, 184);
     margin-bottom: 20px;
+    padding-left: 5px;
 }
 
 .saved-items li {
     list-style: none;
     padding: 10px 0;
-    border-bottom: 1px solid pink;
+    border: 1px solid pink;
+}
+.list-item {
+    border: 1px solid rgb(213, 148, 205);
+    display: flex;
+}
+.list-item li {
+    border: 1px solid rgb(213, 148, 205);
+    display: flex;
+    margin-left: 10px;
+}
+.user-note {
+    margin-bottom: 10px;
 }
 .user-note span {
     font-weight: 600;
