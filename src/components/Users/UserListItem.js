@@ -20,7 +20,7 @@ function UserListItem({ list }) {
   }
   useEffect(() => {
     setUpdatedList(removeEmptyStrings(list.products));
-  }, [list.products, list]);
+  }, [list.products, list, ]);
 
   //default picture for image display
   const defaultProductImage = "https://png.pngtree.com/thumb_back/fh260/background/20230721/pngtree-assorted-grocery-items-arranged-in-a-white-3d-rendering-of-a-image_3722980.jpg";
@@ -33,7 +33,7 @@ function UserListItem({ list }) {
     });
 
     setMatchedImages(updatedMatchedImages);
-}, [list]);
+}, [list, list.products, matchedImages]);
 
 console.log(matchedImages);
 
