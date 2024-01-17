@@ -33,11 +33,11 @@ function UserMenu() {
           <img src="https://t3.ftcdn.net/jpg/02/96/66/58/360_F_296665879_g3GUJU6Vv9KzKkcNyaQ4uXEcCzRT6hSc.jpg" alt="a woman who uses this app"></img>
         </div>
         <div className="user-name">{capitalizeFirstLetter(user.username)}</div>
-        <button className="username_email_button"onClick={showEmail}>{hidden ? "Show" : "Hide"} Email</button>
+        <button className="username_email_button"onClick={showEmail}>{hidden ? "Hide" : "Show"} Email</button>
         {hidden ? 
-        <div></div>
-        :
         <div className="username_email">{user.email}</div> 
+        :
+        <div></div>
         }
         <p>{lists.length === 0 ? <Link className="startSaving" to="/search">Start Saving, Add a List!</Link>: `Number of Lists: ${lists.length}`}</p>
       </div>
