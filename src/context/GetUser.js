@@ -46,7 +46,7 @@ export const AuthWrapper = () => {
         // If the server responds with an error status, the cookie does not exist
         console.log("Cookie Not Set", error);
       });
-  }, [location]);
+  }, [location, getUserData, ]);
 
   const getUserData = () => {
     instance
@@ -65,7 +65,7 @@ export const AuthWrapper = () => {
     if (user) {
       getUserList(user.user_id)
     }
-  }, [user]);
+  }, [user, getUserList]);
 
   // get user list
   const getUserList = (userId) => {
@@ -74,7 +74,7 @@ export const AuthWrapper = () => {
       .get(`${API}/lists/user/${userId}`)
       .then((res) => {
         setUserList(res.data)
-        console.log(userList);
+        console.log(res.data.lists);
       })
       .catch((error) => {
           console.error("catch", error);

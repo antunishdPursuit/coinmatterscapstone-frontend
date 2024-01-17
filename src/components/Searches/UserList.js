@@ -28,8 +28,6 @@ export default function UserList() {
     const [stores, setStores] = useState([]);
     const [matchedImages, setMatchedImages] = useState([]);
 
-    const API = process.env.REACT_APP_API_URL;
-
     //Products Data Retrieved Here
     const [products, setProducts] = useState([]);
 
@@ -39,7 +37,7 @@ export default function UserList() {
             setProducts(response.data);
         })
         .catch((e) => console.error("error fetching data", e));
-    }, []);
+    }, [API]);
 
     //Retailers/Stores data retrieved here
         useEffect(() => {
@@ -48,7 +46,7 @@ export default function UserList() {
                 setStores(response.data);
             })
             .catch((e) => console.error("error fetching data", e));
-        }, []);
+        }, [API]);
     
 
 

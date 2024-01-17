@@ -1,15 +1,11 @@
 import { useEffect,useState } from "react";
-import axios from "axios";
 import "./UserListItem.css"
 import images from "../Searches/listImages";
-
-const API = process.env.REACT_APP_API_URL;
 
 function UserListItem({ list }) {
   const [updatedList, setUpdatedList] = useState([]);
   const [matchedImages, setMatchedImages] = useState([]);
-  const [menuList, setMenuList] = useState([]);
-  console.log(list);
+  // const [menuList, setMenuList] = useState([]);
 
   function removeEmptyStrings(arr) {
     return arr.filter(item => item.trim() !== '');
@@ -33,9 +29,8 @@ function UserListItem({ list }) {
     });
 
     setMatchedImages(updatedMatchedImages);
-}, [list]);
+}, [updatedList, list]);
 
-console.log(matchedImages);
 
 //this fxn removes an item from the list if the user no longer wants that on their grocery list
 // const removeListItem = (removedItem) => {
