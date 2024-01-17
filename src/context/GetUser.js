@@ -27,7 +27,7 @@ export const AuthWrapper = () => {
         setLoggedIn(true)
       })
       .catch((error) => {
-        console.error("Login failed", error);
+        console.error("Login failed", error); 
       });
   };
 
@@ -35,7 +35,8 @@ export const AuthWrapper = () => {
   useEffect(() => {
     console.log(`The current route is ${location.pathname}`);
     console.log("Checking loggined in")
-    axios.get(`${process.env.REACT_APP_API_URL}/check-login`, { withCredentials: true })
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/check-login`, { withCredentials: true })
       .then((response) => {
         // If the server responds with a success status, the cookie exists
         console.log("Cookie Set")
@@ -46,7 +47,7 @@ export const AuthWrapper = () => {
         // If the server responds with an error status, the cookie does not exist
         console.log("Cookie Not Set", error);
       });
-  }, [location, getUserData, ]);
+  }, [location, user, loggedIn]);
 
   const getUserData = () => {
     instance

@@ -29,7 +29,7 @@ function UserListItem({ list }) {
     });
 
     setMatchedImages(updatedMatchedImages);
-}, [updatedList, list]);
+}, [list, list.products, matchedImages]);
 
 
 //this fxn removes an item from the list if the user no longer wants that on their grocery list
@@ -63,13 +63,13 @@ function UserListItem({ list }) {
               </>
               ))}
           </ul>
-          <div className="user-note">
+        </div>
+        <div className="user-note">
             <span>Note: </span>{list.note}
-          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default UserListItem
+export default UserListItem;
