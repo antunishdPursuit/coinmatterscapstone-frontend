@@ -29,7 +29,7 @@ function UserListItem({ list }) {
     });
 
     setMatchedImages(updatedMatchedImages);
-}, [list, list.products, matchedImages]);
+}, [list, list.products, matchedImages, updatedList]);
 
 
 //this fxn removes an item from the list if the user no longer wants that on their grocery list

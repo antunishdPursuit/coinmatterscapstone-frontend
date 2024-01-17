@@ -37,7 +37,7 @@ export default function UserList() {
             setProducts(response.data);
         })
         .catch((e) => console.error("error fetching data", e));
-    }, [API]);
+    }, []);
 
     //Retailers/Stores data retrieved here
         useEffect(() => {
@@ -46,7 +46,7 @@ export default function UserList() {
                 setStores(response.data);
             })
             .catch((e) => console.error("error fetching data", e));
-        }, [API]);
+        }, []);
     
 
 
