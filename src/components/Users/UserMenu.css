@@ -57,15 +57,21 @@
     transition: color 0.3s;
 }
 .startSaving{
-    text-decoration: none;
-    border-style: solid;
-    border-color: rgb(242, 56, 174);
-    border-radius: 30px;
-    background-color: pink;
-    padding: 1px;
+    all: unset;
+    border: 1.5px solid rgb(237, 107, 211);
+    border-radius: 8px;
+    padding: 5px 7px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: rgb(237, 107, 211);
+    width: 70px;
 }
 .startSaving:hover{
-    color: yellow;
+    background-color: rgb(237, 107, 211);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: color 0.3s;
 }
 .usermenuBox2_No_Lists{
     margin: auto;
