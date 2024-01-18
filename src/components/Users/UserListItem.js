@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
-import axios from "axios";
 import "./UserListItem.css"
 import images from "../Searches/listImages";
+
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -12,6 +12,7 @@ function UserListItem({ list,setUpdatedLists, sortFunction  }) {
   const toggleExpansion = () => {
     setIsExpanded(!isExpanded);
   };
+
 
   function removeEmptyStrings(arr) {
     return arr.filter(item => item.trim() !== '');
@@ -33,7 +34,7 @@ function UserListItem({ list,setUpdatedLists, sortFunction  }) {
     });
 
     setMatchedImages(updatedMatchedImages);
-}, [list, list.products, matchedImages]);
+}, [list, list.products, updatedList]);
 
 //Passing the sort function to sort the lists
 const sortedLists = sortFunction(list);
@@ -41,6 +42,7 @@ const sortedLists = sortFunction(list);
 useEffect(() => {
   setUpdatedLists(sortedLists);
 }, [setUpdatedLists, sortedLists]);
+
 
 //this fxn removes an item from the list if the user no longer wants that on their grocery list
 // const removeListItem = (removedItem) => {
@@ -68,16 +70,14 @@ useEffect(() => {
         <div className="saved-items">
           <ul>
               {matchedImages.map((item, i) => (
-              <>
-                  <div key={i} className="list-item">
-                      <img
-                          src={item.image}
-                          alt={item.name}
-                          style={{ width: "50px", height: "50px" }}
-                      />
-                      <li>{item.name}</li>
-                  </div>
-              </>
+                <div key={i} className="list-item">
+                    <img
+                        src={item.image}
+                        alt={item.name}
+                        style={{ width: "50px", height: "50px" }}
+                    />
+                    <li>{item.name}</li>
+                </div>
               ))}
           </ul>
         </div>

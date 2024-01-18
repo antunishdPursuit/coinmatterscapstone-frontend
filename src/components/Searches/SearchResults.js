@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import searchResults from "../../CSS/SearchResults.module.css";
-import mockData from "./mockData";
 import logo from "../../Images/navLogo.png"
 
 //this fxn returns the results of the user's search

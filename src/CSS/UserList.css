@@ -11,9 +11,7 @@
     padding-left: 30px;
     padding-right: 30px;
 }
-.username {
-    /* border: 3px solid rgb(0, 255, 123); */ 
-}
+
 .item-search {
     display: flex;
     justify-content: space-between;

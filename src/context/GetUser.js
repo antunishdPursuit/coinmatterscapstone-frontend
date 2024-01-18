@@ -24,6 +24,7 @@ export const AuthWrapper = () => {
       .post(`${API}/login`, existingUser)
       .then((res) => {
         console.log("Login successful");
+        getUserData()
         setLoggedIn(true)
       })
       .catch((error) => {
@@ -32,50 +33,52 @@ export const AuthWrapper = () => {
   };
 
     //Makes it so that every time the route changes, the function is triggered
-  useEffect(() => {
-    console.log(`The current route is ${location.pathname}`);
+  // Disable exhaustive-deps linting for the following lines
+    useEffect(() => {
     console.log("Checking loggined in")
     axios
       .get(`${process.env.REACT_APP_API_URL}/check-login`, { withCredentials: true })
       .then((response) => {
         // If the server responds with a success status, the cookie exists
         console.log("Cookie Set")
-        getUserData()
         setLoggedIn(true)
+        // getUserData()
       })
       .catch((error) => {
         // If the server responds with an error status, the cookie does not exist
         console.log("Cookie Not Set", error);
       });
-  }, [location, user, loggedIn]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
 
   const getUserData = () => {
     instance
       .get(`${API}/user`)
       .then((res) => {
+        console.log("getUSerDAta:" )
+        console.log(res.data.authorizedData)
         setUser(res.data.authorizedData)
-        console.log(user);
-        // getUserList(res.data.authorizedData.user_id)
       })
       .catch((error) => {
           console.error("catch", error);
       });
   }
 
+  // Disable exhaustive-deps linting for the following lines
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (user) {
       getUserList(user.user_id)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, location]);
 
   // get user list
   const getUserList = (userId) => {
-    console.log(userId)
     instance
       .get(`${API}/lists/user/${userId}`)
       .then((res) => {
         setUserList(res.data)
-        console.log(userList);
       })
       .catch((error) => {
           console.error("catch", error);

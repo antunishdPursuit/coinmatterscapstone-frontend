@@ -28,8 +28,6 @@ export default function UserList() {
     const [stores, setStores] = useState([]);
     const [matchedImages, setMatchedImages] = useState([]);
 
-    const API = process.env.REACT_APP_API_URL;
-
     //Products Data Retrieved Here
     const [products, setProducts] = useState([]);
 
@@ -211,7 +209,9 @@ export default function UserList() {
     }, [cheapestOptions, prices]);
 
     const capitalizeFirstLetter = (str) => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
+        if(str){
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
       }
     return (
         <div className="search-page-container">
@@ -254,7 +254,6 @@ export default function UserList() {
                     <div className="user-list">
                         <ul>
                             {matchedImages.map((item, i) => (
-                            <>
                                 <div key={i} className="item">
                                     <img
                                         src={item.image}
@@ -283,7 +282,6 @@ export default function UserList() {
                                         />
                                     </button>
                                 </div>
-                            </>      
                             ))}
                         </ul>
                     </div>
