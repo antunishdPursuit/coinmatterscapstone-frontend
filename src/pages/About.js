@@ -25,7 +25,7 @@ const teamMembers = [
     facebook: "Facebook URL 2",
   },
   {
-    name: "Noni Parker",
+    name: "Noni Porter",
     bio: `"Short sentence.... "`,
     // image: "https://ca.slack-edge.com/TCVA3PF24-U04DJT704N5-c3f8a5fd5f98-512",
     image: "https://placehold.co/600x400",
