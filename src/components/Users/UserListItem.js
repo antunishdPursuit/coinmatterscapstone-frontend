@@ -2,10 +2,7 @@ import { useEffect,useState } from "react";
 import "./UserListItem.css"
 import images from "../Searches/listImages";
 
-
-const API = process.env.REACT_APP_API_URL;
-
-function UserListItem({ list,setUpdatedLists, sortFunction  }) {
+function UserListItem({ list  }) {
   const [matchedImages, setMatchedImages] = useState([]);
   const [isExpanded, setIsExpanded] = useState(false);
   
@@ -34,16 +31,9 @@ function UserListItem({ list,setUpdatedLists, sortFunction  }) {
     });
 
     setMatchedImages(updatedMatchedImages);
-}, [list, list.products, updatedList]);
+}, [list, list.products]);
 
 //Passing the sort function to sort the lists
-const sortedLists = sortFunction(list);
-
-useEffect(() => {
-  setUpdatedLists(sortedLists);
-}, [setUpdatedLists, sortedLists]);
-
-
 //this fxn removes an item from the list if the user no longer wants that on their grocery list
 // const removeListItem = (removedItem) => {
 //   const removeList = updatedList.filter((item)=> item.toLowerCase() !== removedItem.toLowerCase());
