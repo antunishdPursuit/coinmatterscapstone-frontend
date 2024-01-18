@@ -28,8 +28,8 @@
   background-color: #ffffff;
   opacity: 0.9;
   width: 400px
-
 }
+
 .team {
   display: flex;
   flex-wrap: wrap;
@@ -49,6 +49,10 @@
   border-radius: 50%;
 }
 
+.team-member h2 {
+  font-size:medium;
+}
+
 .social-links {
   margin-top: 20px;
 }
@@ -62,4 +66,29 @@
 
 .social-links a:hover {
   text-decoration: underline;
+}
+
+.special-thanks-banner{
+  background-image: url("../Images/navLogo.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: center;
+  background-position-y: center;
+  display: flex;
+  color: black;
+  padding: 3%;
+}
+
+.special-thanks-banner-box{
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  
+}
+
+.special-thanks-banner-box h1{
+  background-color: #ffffff;
+  opacity: 0.9;
+  width: 100%
 }
