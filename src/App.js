@@ -6,6 +6,7 @@ import {AuthWrapper} from "./context/GetUser";
 
 // Layout
 import Footer from './layout/Footer';
+import "./App.css"
 
 function App() {
 
