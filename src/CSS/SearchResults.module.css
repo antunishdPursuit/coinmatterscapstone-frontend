@@ -104,6 +104,7 @@
 .total {
     /* border: 2px solid rgb(68, 0, 255); */
     margin-left: 10px;
+    margin-top: auto;
 }
 
 .total p {
@@ -114,7 +115,8 @@
 .best-deal-label {
     margin-left: 10px;
     color: rgb(0, 0, 0);
-    background-color: rgb(249, 218, 43);
+    font-size: 20px;
+    background-color: rgb(255, 217, 0);
     border-radius: 8px;
     padding: 0px 10px;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AuthData } from "../../context/GetUser"
 import { Link } from "react-router-dom";
 import UserListItem from "./UserListItem";
@@ -9,6 +9,11 @@ function UserMenu() {
   const { user } = AuthData()
   const { userList } = AuthData()
   const [ hidden, setHidden] = useState(false)
+  const [updatedLists, setUpdatedLists] = useState([]);
+  const [sortBy, setSortBy] = useState('date'); 
+  const [sortDirection, setSortDirection] = useState('desc');
+  
+
 
   function showEmail() {
     if(hidden === false){
@@ -26,6 +31,28 @@ function UserMenu() {
 
   const lists = userList.lists;
 
+  // Sorting functions
+  const sortByDate = (a, b) => {
+  const dateA = a?.date_created ? new Date(a.date_created) : null;
+  const dateB = b?.date_created ? new Date(b.date_created) : null;
+
+  if (dateA && dateB) {
+    return sortDirection === 'desc' ? dateB.getTime() - dateA.getTime() : dateA.getTime() - dateB.getTime();
+  } else {
+    // Handle the case where one or both items don't have date_created property
+    return 0; // Change this based on your desired behavior
+  }
+};
+const sortByName = (a, b) => {
+  const nameA = (a?.list_name || '').toLowerCase();
+  const nameB = (b?.list_name || '').toLowerCase();
+
+  return sortDirection === 'desc' ? nameB.localeCompare(nameA) : nameA.localeCompare(nameB);
+};
+
+   // Pass the sorting function to UserListItem
+   const sortFunction = sortBy === 'date' ? sortByDate : sortByName;
+
   return (
     <div className="usermenuBox">
       <div className="usermenuBox1">
@@ -40,6 +67,18 @@ function UserMenu() {
         <div></div>
         }
         <p>{lists.length === 0 ? <Link className="startSaving" to="/search">Start Saving, Add a List!</Link>: `Number of Lists: ${lists.length}`}</p>
+        <div>
+        <label>
+          Sort by:
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <option value="date">Date</option>
+            <option value="name">Name</option>
+          </select>
+        </label>
+        <button className="sort-btn" onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}>
+          {sortDirection === 'asc' ? '↑' : '↓'}
+        </button>
+        </div>
       </div>
       <div className="usermenuBox2">
         {lists.length === 0 
@@ -50,7 +89,9 @@ function UserMenu() {
           return (
             <UserListItem 
               key={list.list_id}
-              list={list} 
+              list={list}
+              setUpdatedLists={setUpdatedLists}
+              sortFunction={sortFunction}
             />
           )
         })
